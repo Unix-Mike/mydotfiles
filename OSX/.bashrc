@@ -6,3 +6,5 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
+
+export PATH="$PATH:"/Volumes/Mx2/Applications/microchip/xc8/v1.35/bin""

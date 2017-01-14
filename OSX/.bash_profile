@@ -8,6 +8,10 @@ if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
-# MacPorts Installer addition on 2015-02-27_at_17:20:44: adding an appropriate PATH variable for use with MacPorts.
+
+# MacPorts Installer addition on 2015-10-02_at_22:19:45: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
+
+
+export PATH="$PATH:"/Volumes/Mx2/Applications/microchip/xc8/v1.35/bin""

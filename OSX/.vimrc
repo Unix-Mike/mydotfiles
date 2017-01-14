@@ -31,12 +31,13 @@ Plugin 'user/L9', {'name': 'newL9'}
 " ********* Mike's plugins *********
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
-Plugin 'ShowMarks'
+" Plugin 'ShowMarks'
 Plugin 'The-NERD-tree'
 Plugin 'surround.vim'
 Plugin 'tComment'
 Plugin 'Tabular'
 Plugin 'EasyMotion'
+Plugin 'Syntastic'
 
 " ***********************************************************
 " All of your Plugins must be added before the following line
@@ -107,11 +108,11 @@ syntax on
 "color northsky
 "color nightsky
 " color vj
-color vibrantink
-" color ubloh
+"color vibrantink
+color vc
 
 " ====== Key Mappings ======
 map <C-n> :NERDTreeToggle <cr>
-
-
+"map <C-[> :set paste <cr>
+"map <C-]> :set nopaste <cr>
 

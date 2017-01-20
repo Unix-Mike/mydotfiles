@@ -68,6 +68,8 @@ set laststatus=2
 set history=50
 set autoindent
 set showmode
+set path+=**
+set wildmenu
 
 syntax on
 
@@ -107,8 +109,9 @@ highlight ShowMarksHLm ctermfg=white ctermbg=blue
 "color zephyr
 "color rdark-terminal
 "color northsky
-color vibrantink
+"color vibrantink
 "color vj
+color vc
 
 """ SYSTEM CLIPBOARD COPY & PASTE SUPPORT
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
@@ -117,5 +120,7 @@ vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-map <C-n> :NERDTreeToggle <cr>
+" Nerd Tree
+"map <C-n> :NERDTreeToggle <cr>
+noremap ,n :NERDTreeToggle <CR>
 "

@@ -66,6 +66,8 @@ set autoread
 set noswapfile
 set history=50
 set laststatus=2
+set path+=**
+set wildmenu
 
 " Numbers
 set number
@@ -112,7 +114,8 @@ syntax on
 color vc
 
 " ====== Key Mappings ======
-map <C-n> :NERDTreeToggle <cr>
+"map <C-n> :NERDTreeToggle <cr>
+noremap ,n :NERDTreeToggle <CR>
 "map <C-[> :set paste <cr>
 "map <C-]> :set nopaste <cr>
 

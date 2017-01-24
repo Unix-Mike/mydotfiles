@@ -14,6 +14,4 @@ else
 fi
 
 cd $ospath
-pwd
-ls -la
-
+cp ./.* ~

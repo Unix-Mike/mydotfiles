@@ -15,4 +15,7 @@ alias nb="netbeans --jdkhome /usr/java/jdk1.8.0_121"
 alias tmx="tmux new -s Mike"
 alias gitd="git diff"
 alias gits="git status"
+alias lol='lolcat'
+
+eval $(thefuck --alias crap)
 

@@ -1,0 +1,16 @@
+shell -${SHELL}
+caption always "%n(%t) : %C"
+defscrollback 5000
+startup_message off
+hardstatus on
+hardstatus alwayslastline
+# Remap C-a to `
+#escape `\
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
+hardstatus alwayslastline "%-Lw%{= 5W}%50>%n%f* %t%{-}%+Lw%< %=%{= GK} %D %M %d %c %{-}"
+#hardstatus string '%{= kK}%-Lw%{= KW}%50>%n%f %t%{= kK}%+Lw%< %{=kG}%-= %d%M %c:%s%{-}'
+#hardstatus string '%{= kK}%-Lw%{= KW}%50>%n%f %t%{= kK}%+Lw%< %{=gk}%-= %d%M %c:%s%{-}'

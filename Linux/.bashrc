@@ -11,7 +11,8 @@ fi
 #
 
 # My custom prompt
-export PS1="\[\e]0;\w\a\]\n\[\e[1;33;42m\] \u \[\e[0m\] on \[\e[1;33;46m\] \h \[\e[0;33m\] \w\[\e[0m\]\n\$ "
+#export PS1="\[\e]0;\w\a\]\n\[\e[1;33;42m\] \u \[\e[0m\] on \[\e[1;33;46m\] \h \[\e[0;33m\] \w\[\e[0m\]\n\$ "
+export PS1="\[\033[0;31m\]\342\224\214\342\224\200$([[ $? != 0 ]] && echo "[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200")[\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\$\[\e[0m\]"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -33,7 +34,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PERL_MB_OPT="--install_base \"/home/mstuder/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/mstuder/perl5"; export PERL_MM_OPT;
-export PERL5LIB=/home/mstuder/perl5/lib/perl5/
+#PERL_MB_OPT="--install_base \"/home/mstuder/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/mstuder/perl5"; export PERL_MM_OPT;
+#export PERL5LIB=/home/mstuder/perl5/lib/perl5/
+
 

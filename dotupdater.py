@@ -13,7 +13,10 @@ import sys
 import os
 from os.path import expanduser
 
-useros = raw_input("Select OS, o = OSX, l = Linux: ")
+print "This utility checks differences between mydotfiles and users home directory"
+print "It gives you the option to replace the files.  It will ask what to do for each file."
+print ""
+useros = raw_input("Please select OS, o = OSX, l = Linux: ")
 if useros == 'l':
     ospath = "./Linux"
 elif useros == 'o':
@@ -22,7 +25,7 @@ else:
     exit(1)
 os.chdir(ospath)
 home = expanduser("~")
-
+# Everything is based on what is in the mydotfiles directory
 files = [f for f in os.listdir('.') if os.path.isfile(f)]
 for f in files:
     f2 = home + '/' + f
@@ -36,27 +39,34 @@ for f in files:
         print "host1 is", f2
         # Do a diff at this point.  
         with open(f, 'r') as hosts0:
-          with open(f2, 'r') as hosts1:
-             diff = difflib.unified_diff(
-               hosts0.readlines(),
+            with open(f2, 'r') as hosts1:
+                diff = difflib.unified_diff(
+                 hosts0.readlines(),
                hosts1.readlines(),
                fromfile='hosts0',
                tofile='hosts1',
              )
-             for line in diff:
-                sys.stdout.write(line) 
+                for line in diff:
+                    sys.stdout.write(line) 
         print
-        kk = raw_input("Replace this hosts dot file with the repo version y/n: ")
-        if kk == 'y':
-           # Do the copy
-           print "Copying over the file"
-           # src, dst
-           shutil.copy2(f,f2)
-        elif kk == 'n':
-           # Ignore and exit
-           print "Ignoring file difference and continuing."
+        # Now check what to do.
+        # f = mydotfiles
+        # f2 = ~
+        print "Select what to do with", f
+        print "1. Copy from mydotfiles to ~ "
+        print "2. Copy from ~ to mydotfiles"
+        print "3. Do nothing and exit"
+        kk = raw_input("Choice: ")
+        if kk == '1':
+            print "Copying mydotfiles to ~ "
+            # src, dst
+            shutil.copy2(f,f2)
+        elif kk == '2':
+            print "Copying ~ to mydotfiles "
+            # src, dst
+            shutil.copy2(f2,f)
         else:
-           print "Yes (y) or No (n) are the only choices"
-           exit(1)
+            print "No changes made. Exiting."
+            exit(1)
 
 

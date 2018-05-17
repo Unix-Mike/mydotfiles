@@ -6,7 +6,7 @@ username="mstuder"
 
 mypath=$(eval echo ~${username})
 myos="$(/usr/bin/uname -s)"
-echo "OS detected = $myos"
+# echo "OS detected = $myos"
 if [ $myos == 'Darwin' ]; then
 	ospath="$mypath/GitHub/mydotfiles/OSX/"
 elif [ $myos == 'Linux' ]; then
@@ -16,6 +16,5 @@ else
 	exit 1
 fi
 cd $ospath
-
 # cp ./.* $mypath  # It barfs on . dirs
 find . -type f -exec cp {} $ospath \;

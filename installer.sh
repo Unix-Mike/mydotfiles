@@ -16,4 +16,6 @@ else
 	exit 1
 fi
 cd $ospath
-cp ./.* $mypath
+
+# cp ./.* $mypath  # It barfs on . dirs
+find . ! -iregex "\.[a-z]+" -exec cp {} $ospath \;

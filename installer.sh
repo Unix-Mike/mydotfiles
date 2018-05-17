@@ -17,4 +17,4 @@ else
 fi
 cd $ospath
 # cp ./.* $mypath  # It barfs on . dirs
-/usr/bin/find . -type f -exec cp {} $ospath \;
+/usr/bin/find . -type f -exec cp {} $mypath \;

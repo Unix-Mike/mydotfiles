@@ -3,7 +3,7 @@
 #
 # Set your  username
 username="mstuder"
-
+# ===========================
 mypath=$(eval echo ~${username})
 myos="$(/usr/bin/uname -s)"
 # echo "OS detected = $myos"
@@ -17,4 +17,4 @@ else
 fi
 cd $ospath
 # cp ./.* $mypath  # It barfs on . dirs
-find . -type f -exec cp {} $ospath \;
+/usr/bin/find . -type f -exec cp {} $ospath \;

@@ -16,4 +16,4 @@ else
 	exit 1
 fi
 cd $ospath
-cp ./.* ~
+cp ./.* $mypath

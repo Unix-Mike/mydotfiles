@@ -2,7 +2,7 @@
 # Install dot files to local system
 #
 # read -p "Select OS, OSX (1), Linux (2): " myos
-myos="$(uname -s)"
+myos="$(/usr/bin/uname -s)"
 echo "OS detected = $myos"
 if [ $myos == 'Darwin' ]; then
 	ospath="./OSX/"

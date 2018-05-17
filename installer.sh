@@ -5,9 +5,9 @@
 myos="$(/usr/bin/uname -s)"
 echo "OS detected = $myos"
 if [ $myos == 'Darwin' ]; then
-	ospath="./OSX/"
+	ospath="~/GitHub/mydotfiles/OSX/"
 elif [ $myos == 'Linux' ]; then
-	ospath="./Linux/"
+	ospath="~/GitHub/mydotfiles/Linux/"
 else
 	echo "No changes made. Exiting"
 	exit 1

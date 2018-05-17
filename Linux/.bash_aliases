@@ -17,5 +17,5 @@ alias gitd="git diff"
 alias gits="git status"
 alias lol='lolcat'
 
-eval $(thefuck --alias crap)
+# eval $(thefuck --alias crap)
 

@@ -18,4 +18,4 @@ fi
 cd $ospath
 
 # cp ./.* $mypath  # It barfs on . dirs
-find . ! -iregex "\.[a-z]+" -exec cp {} $ospath \;
+find . -type f -exec cp {} $ospath \;

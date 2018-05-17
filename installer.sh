@@ -1,13 +1,16 @@
 #!/bin/bash
 # Install dot files to local system
 #
-# read -p "Select OS, OSX (1), Linux (2): " myos
+# Set your  username
+username="mstuder"
+
+mypath=$(eval echo ~${username})
 myos="$(/usr/bin/uname -s)"
 echo "OS detected = $myos"
 if [ $myos == 'Darwin' ]; then
-	ospath="~/GitHub/mydotfiles/OSX/"
+	ospath="$mypath/GitHub/mydotfiles/OSX/"
 elif [ $myos == 'Linux' ]; then
-	ospath="~/GitHub/mydotfiles/Linux/"
+	ospath="$mypath/GitHub/mydotfiles/Linux/"
 else
 	echo "No changes made. Exiting"
 	exit 1

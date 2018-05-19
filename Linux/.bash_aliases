@@ -16,6 +16,7 @@ alias tmx="tmux new -s Mike"
 alias gitd="git diff"
 alias gits="git status"
 alias lol='lolcat'
+alias vi='vim'
 
 # eval $(thefuck --alias crap)
 

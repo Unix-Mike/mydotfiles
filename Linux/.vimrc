@@ -2,7 +2,6 @@
 "
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set mouse=a             " Enable mouse usage (all modes)
@@ -17,6 +16,17 @@ set path+=**
 set wildmenu
 
 syntax on
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+   \ "mode": "passive"}
 
 " Numbers
 set number
@@ -69,4 +79,6 @@ map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 " Nerd Tree
 "map <C-n> :NERDTreeToggle <cr>
 noremap ,n :NERDTreeToggle <CR>
+noremap ,s :SyntasticCheck <CR>
+noremap ,w :FixWhitespace <CR>
 "

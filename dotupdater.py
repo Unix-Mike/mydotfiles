@@ -6,6 +6,8 @@
 # Written by Mike Studer
 # Oct 2017
 #
+# Updated 20 Apr 2019
+#
 import filecmp
 import difflib
 import shutil

@@ -15,6 +15,10 @@ import sys
 import os
 import tarfile
 from os.path import expanduser
+from pathlib import Path
+
+# f_git = mydotfiles
+# f_home = ~
 
 print("This utility checks differences between mydotfiles and users home directory")
 print("It gives you the option to replace the files.  It will ask what to do for each file.")
@@ -32,63 +36,64 @@ os.chdir(ospath)
 home = expanduser("~")
 # Everything is based on what is in the mydotfiles directory
 files = [f for f in os.listdir('.') if os.path.isfile(f)]
-for f in files:
-    f2 = home + '/' + f  # f2 is home dir files
-#    print "DEBUG" , f , f2
-    if (filecmp.cmp(f, f2) and os.path.isfile(f2)):
-        print("Files match," + f)
-    else:
-        print()
-        print("*** Mismatch, ", f, " ***")
-        print("git_file is " + f)
-        if os.path.isfile(f2):
-            print("local_file is " + f2)
-            # Do a diff at this point.
-            with open(f, 'r') as git_file:
-                with open(f2, 'r') as local_file:
+for f_git in files:
+    f_home = home + '/' + f_git  # f_home is home dir files
+    #    print "DEBUG" , f_git , f_home
+    # Need to test if a file by that name exists in home dir.
+    home_file = Path(f_home)
+    # if my_file.is_file():
+    if home_file.is_file():
+        if filecmp.cmp(f_git, f_home):
+            print("Files match," + f_git)
+        else:
+            print()
+            print("*** Mismatch between, {} and {} ".format(f_git, f_home))
+            print("Displaying file diffs...")
+            with open(f_git, 'r') as git_file:
+                with open(f_home, 'r') as local_file:
                     diff = difflib.unified_diff(
-                     git_file.readlines(),
-                     local_file.readlines(),
-                     fromfile='git_file',
-                     tofile='local_file',
+                        git_file.readlines(),
+                        local_file.readlines(),
+                        fromfile='git_file',
+                        tofile='local_file',
                     )
                     for line in diff:
                         sys.stdout.write(line)
-            print
-        else:
-            print(f + 'Not in home directory')
-        # Now check what to do.
-        # f = mydotfiles
-        # f2 = ~
-        print("Select what to do with", f)
-        print("1. Copy from mydotfiles to ~ ")
-        print("2. Copy from ~ to mydotfiles")
-        print("3. Skip to next file")
-        print("4. Do nothing and exit")
-        if 'tgz' in f:
-            print("5. Copy and extract file")
-        kk = input("Choice: ")
-        if kk == '1':
-            print("Copying mydotfiles to ~ ")
+                print
+    else:
+        print("{} is not in home directory".format(f_git))
+            # Now let user select what to do.
+    print("\n==============================")
+    print("Please select what to do with {}".format(f_git))
+    print("1. Copy git file to ~ ")
+    if home_file.is_file():
+        print("2. Copy from ~ to git dir")
+    print("3. Skip to next file")
+    print("4. Do nothing and exit")
+    if 'tgz' in f_git:
+        print("5. Copy and extract {}".format(f_git))
+    kk = input("Choice: ")
+    if kk == '1':
+        print("Copying git file to ~ ")
+        # src, dst
+        shutil.copy2(f_git, f_home)
+    elif kk == '2':
+        if home_file.is_file():
+            print("Copying ~ to git dir ")
             # src, dst
-            shutil.copy2(f, f2)
-        elif kk == '2':
-            if os.path.isfile(f2):
-                print("Copying ~ to mydotfiles ")
-                # src, dst
-                shutil.copy2(f2, f)
-            else:
-                print("You can't copy what does not exist!")
-        elif kk == '3':
-            print("Skipping file " + f)
-        elif kk == '5':
-            print("Copying {} to home directory".format(f))
-            shutil.copy2(f, f2)
-            # Now extract it
-            print("Extracting {} to home directory".format(f))
-            tar = tarfile.open(f)
-            tar.extractall()
-            tar.close()
+            shutil.copy2(f_home, f_git)
         else:
-            print("No changes made. Exiting.")
-            exit(1)
+            print("You can't copy what does not exist!")
+    elif kk == '3':
+        print("Skipping file " + f_git)
+    elif kk == '5':
+        print("Copying {} to home directory".format(f_git))
+        shutil.copy2(f_git, f_home)
+        # Now extract it
+        print("Extracting {} to home directory".format(f_git))
+        tar = tarfile.open(f_git)
+        tar.extractall()
+        tar.close()
+    else:
+        print("No changes made. Exiting.")
+        exit(1)

@@ -13,6 +13,7 @@ import difflib
 import shutil
 import sys
 import os
+import tarfile
 from os.path import expanduser
 
 print("This utility checks differences between mydotfiles and users home directory")
@@ -25,6 +26,7 @@ if useros[0] == 'Linux':
 elif useros[0] == 'Darwin':
     ospath = "./OSX"
 else:
+    print("Unable to determine OS.  Exiting.")
     exit(1)
 os.chdir(ospath)
 home = expanduser("~")
@@ -63,6 +65,8 @@ for f in files:
         print("2. Copy from ~ to mydotfiles")
         print("3. Skip to next file")
         print("4. Do nothing and exit")
+        if 'tgz' in f:
+            print("5. Copy and extract file")
         kk = input("Choice: ")
         if kk == '1':
             print("Copying mydotfiles to ~ ")
@@ -77,6 +81,14 @@ for f in files:
                 print("You can't copy what does not exist!")
         elif kk == '3':
             print("Skipping file " + f)
+        elif kk == '5':
+            print("Copying {} to home directory".format(f))
+            shutil.copy2(f, f2)
+            # Now extract it
+            print("Extracting {} to home directory".format(f))
+            tar = tarfile.open(f)
+            tar.extractall()
+            tar.close()
         else:
             print("No changes made. Exiting.")
             exit(1)

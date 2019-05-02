@@ -41,10 +41,10 @@ for f_git in files:
     #    print "DEBUG" , f_git , f_home
     # Need to test if a file by that name exists in home dir.
     home_file = Path(f_home)
-    # if my_file.is_file():
+    # Check if the file exists in the home directory
     if home_file.is_file():
         if filecmp.cmp(f_git, f_home):
-            print("Files match," + f_git)
+            print("Files match, " + f_git)
         else:
             print()
             print("*** Mismatch between, {} and {} ".format(f_git, f_home))
@@ -59,11 +59,11 @@ for f_git in files:
                     )
                     for line in diff:
                         sys.stdout.write(line)
-                print
+            print
     else:
         print("{} is not in home directory".format(f_git))
             # Now let user select what to do.
-    print("\n==============================")
+    print("==============================")
     print("Please select what to do with {}".format(f_git))
     print("1. Copy git file to ~ ")
     if home_file.is_file():
@@ -97,3 +97,4 @@ for f_git in files:
     else:
         print("No changes made. Exiting.")
         exit(1)
+    print

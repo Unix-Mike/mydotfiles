@@ -30,16 +30,20 @@ def sepline():
     print(klr.reset)
 
 
+print()
 print(
-    klr.fg_blue
+    klr.fg_lightblue
+    + klr.bold
     + "This utility checks differences between mydotfiles and users home directory"
     + klr.reset
 )
 print(
-    klr.fg_blue
+    klr.fg_lightblue
+    + klr.bold
     + "It gives you the option to replace the files.  It will ask what to do for each file."
     + klr.reset
 )
+
 print("")
 # useros = input("Please select OS, o = OSX, l = Linux: ")
 useros = os.uname()
@@ -62,13 +66,13 @@ for f_git in files:
     # Check if the file exists in the home directory
     if home_file.is_file():
         if filecmp.cmp(f_git, f_home):
-            print(klr.fg_green + "Files match, " + f_git + klr.reset)
+            print(klr.fg_green + "Files match --> " + f_git + klr.reset)
         else:
             print()
             print(
                 klr.fg_red
                 + klr.bold
-                + "*** Mismatch *** between, "
+                + "*** Mismatch *** between --> "
                 + klr.fg_cyan
                 + f_git
                 + klr.reset
@@ -100,21 +104,21 @@ for f_git in files:
         + klr.reset
     )
     sepline()
-    print("1. Copy git file to ~ ")
+    print("1. Copy git file to home directory")
     if home_file.is_file():
-        print("2. Copy from home to git directory")
+        print("2. Copy from home directory to git directory")
     print("3. Skip to next file")
     print("4. Do nothing and exit")
     if "tgz" in f_git:
         print("5. Copy and extract {}".format(f_git))
     kk = input("Choice: ")
     if kk == "1":
-        print("Copying git file to home ")
+        print("Copying git file to home directory")
         # src, dst
         shutil.copy2(f_git, f_home)
     elif kk == "2":
         if home_file.is_file():
-            print("Copying home to git directory ")
+            print("Copying file from home directory to git directory ")
             # src, dst
             shutil.copy2(f_home, f_git)
         else:
@@ -132,4 +136,6 @@ for f_git in files:
     else:
         print("No changes made. Exiting.")
         exit(1)
-    print
+    sepline()
+    print(klr.fg_lightblue + "Next file".rjust(44) + klr.reset)
+    sepline()

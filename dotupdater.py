@@ -6,7 +6,7 @@
 # Written by Mike Studer
 # Oct 2017
 #
-# Updated 20 Apr 2019
+# Updated May 2019
 #
 import filecmp
 import difflib
@@ -111,9 +111,11 @@ for f_git in files:
     print("4. Do nothing and exit")
     if "tgz" in f_git:
         print("5. Copy and extract {}".format(f_git))
+        print(klr.bg_yellow + klr.fg_red + "     Not working yet. Only does copy." + klr.reset)
     kk = input("Choice: ")
     if kk == "1":
         print("Copying git file to home directory")
+        
         # src, dst
         shutil.copy2(f_git, f_home)
     elif kk == "2":
@@ -137,5 +139,5 @@ for f_git in files:
         print("No changes made. Exiting.")
         exit(1)
     sepline()
-    print(klr.fg_lightblue + "Next file".rjust(44) + klr.reset)
+    print(klr.fg_lightblue + klr.bold + "Next file".rjust(44) + klr.reset)
     sepline()

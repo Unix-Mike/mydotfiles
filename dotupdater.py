@@ -132,8 +132,8 @@ for f_git in files:
         shutil.copy2(f_git, f_home)
         # Now extract it
         print("Extracting {} to home directory".format(f_git))
-        tar = tarfile.open(f_git)
-        tar.extractall()
+        tar = tarfile.open(f_git, 'r:gz')
+        tar.extractall("~")  #   TarFile.extractall(path=".", members=None, *, numeric_owner=False)
         tar.close()
     else:
         print("No changes made. Exiting.")

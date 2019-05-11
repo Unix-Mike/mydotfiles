@@ -111,7 +111,6 @@ for f_git in files:
     print("4. Do nothing and exit")
     if "tgz" in f_git:
         print("5. Copy and extract {}".format(f_git))
-        print(klr.bg_yellow + klr.fg_red + "     Not working yet. Only does copy." + klr.reset)
     kk = input("Choice: ")
     if kk == "1":
         print("Copying git file to home directory")

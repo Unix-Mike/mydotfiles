@@ -111,11 +111,11 @@ def bad_match():
     kk = input(klr.bg_black + klr.fg_yellow + "Choice: " + klr.reset)
     if kk == '1':
         print("Copied from git to home")
-        # DISABLED FOR TESTING shutil.copy2(f_git, f_home)
+        shutil.copy2(f_git, f_home)
         sepline()
     elif kk == '2':
         print("Copied from home to git")
-        # DISABLED FOR TESTING shutil.copy2(f_home, f_git)
+        shutil.copy2(f_home, f_git)
         sepline()
     elif kk == '3':
         sepline()
@@ -127,7 +127,7 @@ def no_match():
     print(klr.bg_yellow + klr.fg_red + "{} is not in home directory".format(f_git) + klr.reset)
     print(klr.fg_green + "Copied {} to home directory".format(f_git) + klr.reset)
     sepline()
-    # DISABLED FOR TESTING shutil.copy2(f_git, f_home) 
+    shutil.copy2(f_git, f_home) 
 
 def os_detector():
     global ospath
@@ -164,14 +164,11 @@ os_detector()
 os.chdir(ospath)
 home = expanduser("~")
 
-
 # Everything is based on what is in the mydotfiles directory
 files = [f for f in os.listdir(".") if os.path.isfile(f)]
 for f_git in files:
     f_home = home + "/" + f_git  # f_home is home dir files
     # Need to test if a file by that name exists in home dir.
     match_check()
-
-
 exit(0)
 

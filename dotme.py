@@ -103,7 +103,7 @@ def bad_match():
             )
             for line in diff:
                 sys.stdout.write(line)
-    print(klr.fg_cyan + "          Select what to do" + klr.reset)
+    print(klr.bg_black + klr.fg_cyan + "          Select what to do" + klr.reset)
     print(klr.bg_black + klr.fg_green + "1. Copy git file to home directory" + klr.reset)
     print(klr.bg_black + klr.fg_green + "2. Copy home file to git directory" + klr.reset)
     print(klr.bg_black + klr.fg_green + "3. Skip to next file" + klr.reset)

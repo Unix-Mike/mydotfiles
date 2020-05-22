@@ -1,7 +1,7 @@
 " Mike Studer's vimrc file
 "
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible        " be iMproved, required
+filetype off            " required
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set mouse=a             " Enable mouse usage (all modes)
@@ -76,6 +76,15 @@ vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+
+" split settings
+set splitbelow splitright
+" Remap splits navigation to just CTRL + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Nerd Tree
 "map <C-n> :NERDTreeToggle <cr>
 noremap ,n :NERDTreeToggle <CR>

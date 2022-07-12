@@ -117,7 +117,8 @@ class Dotme:
             shutil.copy2(f_git, f_home)
             self.sepline()
         elif kk == '2':
-            print("Copied from home to git")
+            print("Copied from home to mydotfiles")
+            print("Make sure to upload this to GitHub.")
             shutil.copy2(f_home, f_git)
             self.sepline()
         elif kk == '3':
@@ -154,13 +155,13 @@ if __name__ == "__main__":
     print(
         myd.klr.fg_lightblue
         + myd.klr.bold
-        + "This utility checks differences between mydotfiles and users home directory"
+        + "This utility checks for differences between mydotfiles and the users home directory"
         + myd.klr.reset
     )
     print(
         myd.klr.fg_lightblue
         + myd.klr.bold
-        + "It gives you the option to replace the files.  It automatically adds missing files."
+        + "It gives you the option to replace the old files in your home directory.\nAutomatically adds any missing files to your home directory."
         + myd.klr.reset
     )
 

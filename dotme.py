@@ -74,9 +74,9 @@ class Dotme:
                     self.sepline()
                     return()
                 else:
-                    bad_match()
+                    self.bad_match()
             else:
-                no_match()
+                self.no_match()
             
         
     def bad_match(self):

@@ -23,13 +23,13 @@ from colors import Colors
 
 class Dotme:
     def __init__(self):
-        klr = Colors(True)
+        self.klr = Colors(True)
 
     def sepline(self):
         for i in list(range(40)):
-            print(klr.fg_lightgrey + "=", end="")
-            print(klr.fg_darkgrey + "=", end="")
-        print(klr.reset)
+            print(self.klr.fg_lightgrey + "=", end="")
+            print(self.klr.fg_darkgrey + "=", end="")
+        print(self.klr.reset)
         return
 
     def logo(self):
@@ -59,19 +59,19 @@ class Dotme:
                     if tfile.is_dir():
                         print("A directory already exists in home named " + tarinfo.name)
                     else:
-                        print(klr.fg_green + "Copied {} to home directory".format(tarinfo.name) + klr.reset)
+                        print(self.klr.fg_green + "Copied {} to home directory".format(tarinfo.name) + klr.reset)
                         tar.extractall(home)  #   TarFile.extractall(path=".", members=None, *, numeric_owner=False)
-                    sepline()
+                    self.sepline()
                     return()
             tar.close()
-            sepline()
+            self.sepline()
         else:
             # Check if the file exists in the home directory
             if home_file.is_file():
                 #  OK there is a file already by that name in the home directory
                 if filecmp.cmp(f_git, f_home):
-                    print(klr.fg_green + "Files match --> " + f_git + klr.reset)
-                    sepline()
+                    print(self.klr.fg_green + "Files match --> " + f_git + self.klr.reset)
+                    self.sepline()
                     return()
                 else:
                     bad_match()
@@ -81,19 +81,19 @@ class Dotme:
         
     def bad_match(self):
         print(
-            klr.fg_red
-            + klr.bg_yellow
-            + klr.bold
+            self.klr.fg_red
+            + self.klr.bg_yellow
+            + self.klr.bold
             + "*** Mismatch *** between -->"
-            +klr.reset
+            +self.klr.reset
             +" "
-            + klr.fg_cyan
+            + self.klr.fg_cyan
             + f_git
-            + klr.reset
+            + self.klr.reset
             + " and "
-            + klr.fg_purple
+            + self.klr.fg_purple
             + f_home
-            + klr.reset
+            + self.klr.reset
         )
         print("Displaying file differences...")
         with open(f_git, "r") as git_file:
@@ -106,30 +106,30 @@ class Dotme:
                 )
                 for line in diff:
                     sys.stdout.write(line)
-        print(klr.bg_black + klr.fg_cyan + "          Select what to do" + klr.reset)
-        print(klr.bg_black + klr.fg_green + "1. Copy git file to home directory" + klr.reset)
-        print(klr.bg_black + klr.fg_green + "2. Copy home file to git directory" + klr.reset)
-        print(klr.bg_black + klr.fg_green + "3. Skip to next file" + klr.reset)
-        print(klr.bg_black + klr.fg_green + "4. Do nothing and exit" + klr.reset)
-        kk = input(klr.bg_black + klr.fg_yellow + "Choice: " + klr.reset)
+        print(self.klr.bg_black + self.klr.fg_cyan + "          Select what to do" + self.klr.reset)
+        print(self.klr.bg_black + self.klr.fg_green + "1. Copy git file to home directory" + self.klr.reset)
+        print(self.klr.bg_black + self.klr.fg_green + "2. Copy home file to git directory" + self.klr.reset)
+        print(self.klr.bg_black + self.klr.fg_green + "3. Skip to next file" + self.klr.reset)
+        print(self.klr.bg_black + self.klr.fg_green + "4. Do nothing and exit" + self.klr.reset)
+        kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)
         if kk == '1':
             print("Copied from git to home")
             shutil.copy2(f_git, f_home)
-            sepline()
+            self.sepline()
         elif kk == '2':
             print("Copied from home to git")
             shutil.copy2(f_home, f_git)
-            sepline()
+            self.sepline()
         elif kk == '3':
-            sepline()
+            self.sepline()
             return
         else:
             exit(0)
 
     def no_match(self):
-        print(klr.bg_yellow + klr.fg_red + "{} is not in home directory".format(f_git) + klr.reset)
-        print(klr.fg_green + "Copied {} to home directory".format(f_git) + klr.reset)
-        sepline()
+        print(self.klr.bg_yellow + self.klr.fg_red + "{} is not in home directory".format(f_git) + self.klr.reset)
+        print(self.klr.fg_green + "Copied {} to home directory".format(f_git) + self.klr.reset)
+        self.sepline()
         shutil.copy2(f_git, f_home) 
 
     def os_detector(self):
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     print()  #  Give some space from the prompt when program starts
     #  Print intro
-    logo()
+    myd.logo()
     print(
         myd.klr.fg_lightblue
         + myd.klr.bold

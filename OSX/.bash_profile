@@ -15,3 +15,4 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 
 export PATH="$PATH:"/Volumes/Mx2/Applications/microchip/xc8/v1.35/bin""
+. "$HOME/.cargo/env"

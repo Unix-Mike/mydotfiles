@@ -6,21 +6,17 @@
 import subprocess
 import sys
 import os
-#import tarfile
 import pathlib
 from os.path import expanduser, exists
-
 from colors import Colors
-
-
 
 class Vimup:
     def __init__(self):
         self.klr = Colors(True)
         self.home = expanduser("~")
         # The v_path is where it will put the modules
-        self.v_path = self.home + '/.vim_test/pack/my-plugins/start/'
-        #self.v_path = self.home + '/.vim/pack/my-plugins/start/'
+        #self.v_path = self.home + '/.vim_test/pack/my-plugins/start/'
+        self.v_path = self.home + '/.vim/pack/my-plugins/start/'
 
         # Key/Value pairs where Key is the actual directory name the plugin creates for itself
         # You can see where problems occur like with The-NERD-tree vs nerdtree
@@ -84,4 +80,3 @@ if __name__ == "__main__":
     print()
     myv.v_listing()
     print()
-    #print(myv.m_list)

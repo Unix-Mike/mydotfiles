@@ -85,5 +85,18 @@ noremap ,w :FixWhitespace <CR>
 "
 
 " vim Macros
+"   Remove double quotes from entire file
 let @q=':%s/"//g'
+"   Remove all comment lines beginning with a #
 let @c=':g/^#.*/d'
+
+" Put these lines at the very end of your vimrc file
+"    Load all plugins now
+"    Plugins need to be added to runtimepath before helptags can be generated
+packloadall
+"    Load all of the helptags now that plugins have been loaded
+" All messages and errors will be ignored
+silent! helptags ALL
+
+
+

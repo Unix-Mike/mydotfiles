@@ -24,12 +24,14 @@ from colors import Colors
 class Dotme:
     def __init__(self):
         self.klr = Colors(True)
+
         self.ospath = 'none'
         self.useros = 'none'
         self.f_home = 'none'
         self.f_git = 'none'
         self.home = 'none'
         self.home_file = 'none'
+
 
     def sepline(self):
         for i in list(range(40)):
@@ -146,8 +148,6 @@ class Dotme:
                 no_match()
 
 
-
-
 #  ================== Main Loop =================
 if __name__ == "__main__":
     myd = Dotme()
@@ -170,12 +170,15 @@ if __name__ == "__main__":
     # myd.ospath = 'none'
     myd.os_detector()
     os.chdir(myd.ospath)
+
     home = expanduser("~")
 
     # Everything is based on what is in the mydotfiles directory
     files = [f for f in os.listdir(".") if os.path.isfile(f)]
+
     for myd.f_git in files:
         myd.f_home = home + "/" + myd.f_git  # f_home is home dir files
+
         # Need to test if a file by that name exists in home dir.
         myd.match_check()
     exit(0)

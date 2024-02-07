@@ -16,6 +16,7 @@ set path+=**
 set wildmenu
 
 syntax on
+
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -27,6 +28,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
    \ "mode": "passive"}
+
 
 " Numbers
 set number
@@ -43,6 +45,7 @@ set shiftwidth=4
 set expandtab
 
 " Lightline config
+
 \let g:lightline = {
       \ 'colorscheme': 'materia',
       \ 'active': {
@@ -87,6 +90,7 @@ highlight ShowMarksHLm ctermfg=white ctermbg=blue
 "color zephyr
 color mike
 
+
 " split settings
 set splitbelow splitright
 " Remap splits navigation to just CTRL + hjkl
@@ -96,8 +100,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Nerd Tree
+
 "map <C-n> :NERDTreeToggle <cr>
 noremap ,n :NERDTreeToggle <CR>
 noremap ,s :SyntasticCheck <CR>
 noremap ,w :FixWhitespace <CR>
 "
+
+" vim Macros
+"   Remove double quotes from entire file
+let @q=':%s/"//g'
+"   Remove all comment lines beginning with a #
+let @c=':g/^#.*/d'
+

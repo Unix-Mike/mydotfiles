@@ -16,8 +16,19 @@ set path+=**
 set wildmenu
 
 syntax on
+
+" Syntastic settings
 set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+   \ "mode": "passive"}
+
 
 " Numbers
 set number
@@ -34,14 +45,15 @@ set shiftwidth=4
 set expandtab
 
 " Lightline config
-let g:lightline = {
-      \ 'colorscheme': 'deus',
+
+\let g:lightline = {
+      \ 'colorscheme': 'materia',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 
@@ -66,10 +78,18 @@ highlight ShowMarksHLo ctermfg=white ctermbg=blue
 highlight ShowMarksHLm ctermfg=white ctermbg=blue
 
 " Colors
-"colorscheme 256-jungle
-"colorscheme vc
-colorscheme DevC++
-"colorscheme twitchy
+"color jellybeans
+"color maui
+"color Chasing_Logic
+"color zephyr
+"color rdark-terminal
+"color northsky
+"color vibrantink
+"color vj
+"color vc
+"color zephyr
+color mike
+
 
 " split settings
 set splitbelow splitright
@@ -80,23 +100,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Nerd Tree
+
+"map <C-n> :NERDTreeToggle <cr>
 noremap ,n :NERDTreeToggle <CR>
+noremap ,s :SyntasticCheck <CR>
 noremap ,w :FixWhitespace <CR>
 "
 
 " vim Macros
 "   Remove double quotes from entire file
-let @q=':%s/"//g'
+let @q=':%s/"//g'
 "   Remove all comment lines beginning with a #
 let @c=':g/^#.*/d'
-
-" Put these lines at the very end of your vimrc file
-"    Load all plugins now
-"    Plugins need to be added to runtimepath before helptags can be generated
-packloadall
-"    Load all of the helptags now that plugins have been loaded
-" All messages and errors will be ignored
-silent! helptags ALL
-
-
 

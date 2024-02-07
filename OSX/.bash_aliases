@@ -1,4 +1,5 @@
-alias ll="ls -lahT"
+# alias ll="ls -lahT"
+alias ll="exa -lag"
 alias lm="ll|more"
 alias df='df -h'
 alias u2l="tr [:upper:] [:lower:]"

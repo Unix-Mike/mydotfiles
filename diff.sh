@@ -7,7 +7,7 @@ dotdiff() {
    find . -type f |sed 's/^.//g'|xargs -I{} sh -c 'echo {};diff .{} ~/{};echo'
 }
 
-read -p "Select OS, OSX (1), Linux (2): " myos
+read -p "Select OS, OSX (1), Linux (2) or (3) to quit: " myos
 if [ $myos -eq 1 ]; then
 	ospath="./OSX"
 	cd $ospath

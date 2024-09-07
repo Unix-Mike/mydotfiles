@@ -1,0 +1,15 @@
+.TH DOTME 1 2021-05-06 GNU
+
+.SH NAME
+dotme
+
+.SH DESCRIPTION
+.B dotme
+Installs preferred dot files in users home directory
+
+.SH OPTIONS
+.TP
+No options
+
+.SH AUTHOR
+Mike Studer <mike@hamsoftware.org>

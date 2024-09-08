@@ -21,6 +21,7 @@ from colors import Colors
 # f_git = mydotfiles
 # f_home = home directory
 
+
 class Dotme:
     def __init__(self):
         self.klr = Colors(True)
@@ -31,7 +32,6 @@ class Dotme:
         self.f_git = 'none'
         self.home = 'none'
         self.home_file = 'none'
-
 
     def sepline(self):
         for i in list(range(40)):
@@ -52,8 +52,8 @@ class Dotme:
             + self.klr.bg_yellow
             + self.klr.bold
             + "*** Mismatch *** between -->"
-            +self.klr.reset
-            +" "
+            + self.klr.reset
+            + " "
             + self.klr.fg_cyan
             + self.f_git
             + self.klr.reset
@@ -69,7 +69,7 @@ class Dotme:
                     git_file.readlines(),
                     local_file.readlines(),
                     fromfile="git_file",
-                        tofile="local_file",
+                    tofile="local_file",
                 )
                 for line in diff:
                     sys.stdout.write(line)
@@ -94,8 +94,8 @@ class Dotme:
             exit(0)
 
     def no_match(self):
-        print(klr.bg_yellow + klr.fg_red + "{} is not in home directory".format(self.f_git) + klr.reset)
-        print(klr.fg_green + "Copied {} to home directory".format(self.f_git) + klr.reset)
+        print(self.klr.bg_yellow + self.klr.fg_red + "{} is not in home directory".format(self.f_git) + self.klr.reset)
+        print(self.klr.fg_green + "Copied {} to home directory".format(self.f_git) + self.klr.reset)
         self.sepline()
         shutil.copy2(self.f_git, self.f_home)
 
@@ -128,7 +128,7 @@ class Dotme:
                     if tfile.is_dir():
                         print("A directory already exists in home named " + tarinfo.name)
                     else:
-                        print(klr.fg_green + "Copied {} to home directory".format(tarinfo.name) + klr.reset)
+                        print(self.klr.fg_green + "Copied {} to home directory".format(tarinfo.name) + self.klr.reset)
                         tar.extractall(home)  # TarFile.extractall(path=".", members=None, *, numeric_owner=False)
                     self.sepline()
                     return()
@@ -145,7 +145,7 @@ class Dotme:
                 else:
                     self.bad_match()
             else:
-                no_match()
+                self.no_match()
 
 
 #  ================== Main Loop =================

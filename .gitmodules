@@ -1,3 +1,21 @@
 [submodule "Linux/.vim/pack/my-plugins/start/lightline.vim"]
 	path = Linux/.vim/pack/my-plugins/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "Linux/.vim/pack/my-plugins/start/nerdtree"]
+	path = Linux/.vim/pack/my-plugins/start/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule "Linux/.vim/pack/my-plugins/start/surround.vim"]
+	path = Linux/.vim/pack/my-plugins/start/surround.vim
+	url = https://github.com/vim-scripts/surround.vim.git
+[submodule "Linux/.vim/pack/my-plugins/start/trailing-whitespace"]
+	path = Linux/.vim/pack/my-plugins/start/trailing-whitespace
+	url = https://github.com/vim-scripts/trailing-whitespace.git
+[submodule "Linux/.vim/pack/my-plugins/start/vim-ale"]
+	path = Linux/.vim/pack/my-plugins/start/vim-ale
+	url = https://github.com/dmerejkowsky/vim-ale
+[submodule "Linux/.vim/pack/my-plugins/start/vim-gitbranch"]
+	path = Linux/.vim/pack/my-plugins/start/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch.git
+[submodule "Linux/.vim/pack/my-plugins/start/vim-trailing-whitespace"]
+	path = Linux/.vim/pack/my-plugins/start/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace

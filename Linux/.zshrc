@@ -73,7 +73,6 @@ plugins=(
 	git
 	colorize
 	archlinux
-	zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh

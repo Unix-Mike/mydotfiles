@@ -4,17 +4,21 @@
 dotdiff() {
    echo "Checking for differences in dot files"
    echo "-------------------------------------"
-   find . -type f |sed 's/^.//g'|xargs -I{} sh -c 'echo {};diff -q .{} ~/{};echo'
+#   find . -type f |sed 's/^.//g'|xargs -I{} sh -c 'echo {};diff -q .{} ~/{};echo'
+   # Note: It matches diff: and differ
+   find . -type f |sed 's/^.//g'|xargs -I{} sh -c 'diff -q .{} ~/{}|grep -e "diff"'
 }
 
-read -p "Select OS, OSX (1), Linux (2) or (3) to quit: " myos
-if [ $myos -eq 1 ]; then
+myos=$(uname -o)
+if [ $myos == "DARWIN" ]; then
 	ospath="./OSX"
 	cd $ospath
+	printf "OSX detected $ospath\n\n"
         dotdiff
-elif [ $myos -eq 2 ]; then
+elif [ $myos == "GNU/Linux" ]; then
 	ospath="./Linux"
 	cd $ospath
+	printf "Linux detected $ospath\n\n"
         dotdiff
 else
 	echo "Unknown OS selected. Exiting"

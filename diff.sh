@@ -10,7 +10,7 @@ dotdiff() {
 }
 
 myos=$(uname -o)
-if [ $myos == "DARWIN" ]; then
+if [ $myos == "Darwin" ]; then
 	ospath="./OSX"
 	cd $ospath
 	printf "OSX detected $ospath\n\n"

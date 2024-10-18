@@ -1,0 +1,12 @@
+https://github.com/itchyny/lightline.vim.git
+https://github.com/preservim/nerdtree
+https://github.com/vim-scripts/surround.vim.git
+https://github.com/vim-scripts/trailing-whitespace.git
+https://github.com/dmerejkowsky/vim-ale
+https://github.com/itchyny/vim-gitbranch.git
+https://github.com/bronson/vim-trailing-whitespace
+https://github.com/prabirshrestha/asyncomplete-lsp.vim
+https://github.com/prabirshrestha/asyncomplete.vim
+https://github.com/github/copilot.vim
+https://github.com/mattn/vim-lsp-settings
+https://github.com/prabirshrestha/vim-lsp

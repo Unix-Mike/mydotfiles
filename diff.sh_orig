@@ -25,7 +25,7 @@ elif [ "$myos" = "GNU/Linux" ]; then
 	ospath="./Linux"
 	cd $ospath || exit 1
     gum style \
-        --border dowble \
+        --border double \
         --margin "1" \
         --padding "i" \
         --border-foreground "$ALERTCOLOR" \

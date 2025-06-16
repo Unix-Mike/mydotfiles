@@ -1,4 +1,5 @@
 " Mike Studer's vimrc file
+" Last Updated Jun 2025
 "
 set nocompatible        " be iMproved, required
 filetype off            " required
@@ -14,6 +15,7 @@ set autoindent
 set showmode
 set path+=**
 set wildmenu
+set t_Co=256
 
 syntax on
 " Syntastic settings
@@ -67,7 +69,8 @@ highlight ShowMarksHLm ctermfg=white ctermbg=blue
 "color vibrantink
 "color vj
 "color vc
-colorscheme zephyr
+"colorscheme zephyr
+colorscheme mike
 
 """ SYSTEM CLIPBOARD COPY & PASTE SUPPORT
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
@@ -79,11 +82,9 @@ map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 
 " split settings
 set splitbelow splitright
-" Remap splits navigation to just CTRL + hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Remap splits navigation to just CTRL + h or v
+nnoremap <C-h> <C-w>s
+nnoremap <C-v> <C-w>v
 
 " Nerd Tree
 "map <C-n> :NERDTreeToggle <cr>
@@ -91,3 +92,34 @@ noremap ,n :NERDTreeToggle <CR>
 noremap ,s :SyntasticCheck <CR>
 noremap ,w :FixWhitespace <CR>
 "
+
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'materia',
+      \ }
+
+" ALE
+" I doubt this works but I left it in...
+let g:ale_python_flake8_args="--ignore=E501"
+
+" LSP section
+filetype plugin on
+" Turn off document diagnostics so ALE can do it
+let g:lsp_diagnostics_enabled = 0
+" Copied (almost) directly from the vim-lsp docs:
+function! s:on_lsp_buffer_enabled() abort
+     setlocal omnifunc=lsp#complete
+     setlocal signcolumn=yes
+     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+
+     let g:lsp_format_sync_timeout = 1000
+     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+     au!
+     " call s:on_lsp_buffer_enabled (set the lsp shortcuts) when an lsp server
+     " is registered for a buffer.
+     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+

@@ -1,4 +1,4 @@
-!/usr/bin/env python3
+#!/usr/bin/env python3
 #
 # Program to check for dot file differences and update
 # as desired.

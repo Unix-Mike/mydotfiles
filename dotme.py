@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+!/usr/bin/env python3
 #
 # Program to check for dot file differences and update
 # as desired.
@@ -13,7 +13,6 @@ import difflib
 import shutil
 import sys
 import os
-import tarfile
 from os.path import expanduser
 from pathlib import Path
 from colors import Colors
@@ -25,20 +24,20 @@ from colors import Colors
 class Dotme:
     def __init__(self):
         self.klr = Colors(True)
-
         self.ospath = 'none'
         self.useros = 'none'
         self.f_home = 'none'
         self.f_git = 'none'
         self.home = 'none'
         self.home_file = 'none'
+        self.head = ''
+        self.tail = ''
 
     def sepline(self):
         for i in list(range(40)):
             print(self.klr.fg_lightgrey + "=", end="")
             print(self.klr.fg_darkgrey + "=", end="")
         print(self.klr.reset)
-        return
 
     def logo(self):
         with open("logo.txt", "r") as dlogo:
@@ -73,11 +72,41 @@ class Dotme:
                 )
                 for line in diff:
                     sys.stdout.write(line)
-        print(self.klr.bg_black + self.klr.fg_cyan + "          Select what to do" + self.klr.reset)
-        print(self.klr.bg_black + self.klr.fg_green + "1. Copy git file to home directory" + self.klr.reset)
-        print(self.klr.bg_black + self.klr.fg_green + "2. Copy home file to git directory" + self.klr.reset)
-        print(self.klr.bg_black + self.klr.fg_green + "3. Skip to next file" + self.klr.reset)
-        print(self.klr.bg_black + self.klr.fg_green + "4. Do nothing and exit" + self.klr.reset)
+        self.head, self.tail = os.path.split(self.f_home)
+        print(self.klr.bg_black +
+            self.klr.fg_cyan +
+            "    Select what to do with " +
+            self.klr.bold +
+            self.klr.bg_yellow +
+            self.klr.fg_red +
+            " " +
+            self.tail +
+            " " +
+            self.klr.reset)
+        print(self.klr.bg_black +
+            self.klr.fg_cyan +
+            "1. " +
+            self.klr.fg_blue +
+            "Copy git file to home directory" +
+            self.klr.reset)
+        print(self.klr.bg_black +
+            self.klr.fg_cyan +
+            "2. " +
+            self.klr.fg_blue +
+            "Copy home file to git directory" +
+            self.klr.reset)
+        print(self.klr.bg_black +
+            self.klr.fg_cyan +
+            "3. " +
+            self.klr.fg_blue +
+            "Skip to next file" +
+            self.klr.reset)
+        print(self.klr.bg_black +
+            self.klr.fg_cyan +
+            "4. " +
+            self.klr.fg_blue +
+            "Do nothing and exit" +
+            self.klr.reset)
         kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)
         if kk == '1':
             print("Copied from git to home")
@@ -111,40 +140,18 @@ class Dotme:
         return(self.ospath)
 
     def match_check(self):
+        # This handles files only
         self.home_file = Path(self.f_home)
-        if "tgz" in self.f_git:
-            print("A tgz file was detected")
-            # Open tar file
-            tar = tarfile.open(self.f_git, 'r:gz')
-            # See what is in tar file
-            for tarinfo in tar:
-                if tarinfo.isdir():
-                    #  print("{} a directory.".format(tarinfo.name))
-                    # Grabs first dir in tar file which should be the base directory
-                    t_file = tarinfo.name
-                    t_file = home + '/' + t_file
-                    tfile = Path(t_file)
-                    #  print("DEBUG: " + t_file)
-                    if tfile.is_dir():
-                        print("A directory already exists in home named " + tarinfo.name)
-                    else:
-                        print(self.klr.fg_green + "Copied {} to home directory".format(tarinfo.name) + self.klr.reset)
-                        tar.extractall(home)  # TarFile.extractall(path=".", members=None, *, numeric_owner=False)
-                    self.sepline()
-                    return()
-            tar.close()
-            self.sepline()
-        else:
-            # Check if the file exists in the home directory
-            if self.home_file.is_file():
-                #  OK there is a file already by that name in the home directory
-                if filecmp.cmp(self.f_git, self.f_home):
-                    print(self.klr.fg_green + "Files match --> " + self.f_git + self.klr.reset)
-                    self.sepline()
-                    return()
-                else:
-                    self.bad_match()
+        # Check if the file exists in the home directory
+        if self.home_file.is_file():
+            #  OK there is a file already by that name in the home directory
+            if filecmp.cmp(self.f_git, self.f_home):
+                print(self.klr.fg_green + "Files match --> " + self.f_git + self.klr.reset)
+                self.sepline()
+                return()
             else:
+                    self.bad_match()
+        else:
                 self.no_match()
 
 

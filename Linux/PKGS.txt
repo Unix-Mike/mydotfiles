@@ -1,0 +1,13 @@
+vim
+lf
+nemo
+kitty
+vivaldi
+krusader
+bless
+zsh
+flameshot
+meld
+kicad
+code
+shellcheck

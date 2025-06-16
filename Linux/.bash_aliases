@@ -4,9 +4,10 @@ alias ls="eza -a"
 alias ll="eza -lag"
 alias lm="ll|more"
 alias ..="cd .."
+alias .2="cd ../.."
+alias .3="cd ../../.."
 alias df="df -khl"
 alias du="du -h"
-#alias ssh="ssh -X"
 #alias cal="cal `date +%Y`"
 alias mroe='more'
 alias teh='the'
@@ -19,7 +20,18 @@ alias tmx="tmux new -s Mike"
 alias lol='lolcat'
 alias vi='vim'
 alias vzf='vim $(fzf --preview="bat --color always {}")'
-#alias ip='ip -4 -c=auto'
 alias aq='asciiquarium'
 alias icat="kitty +kitten icat"
+# alias to allow quick checking of new USB serial connections
+alias ser="ls /dev/tty*|grep -e 'ttyU' -e 'ttyA'"
+
+alias c=clear
+alias s='source ~/.zshrc'
+
+function note {
+    fm="Linux-Journal.txt"
+    echo "Date: $(date)" >> $HOME/$fm
+    echo "$@" >> $HOME/$fm
+    echo "" >> $HOME/$fm
+    }
 

@@ -7,8 +7,14 @@ fi
 
 
 
-export PATH="$PATH:"/Volumes/Mx2/Applications/microchip/xc8/v1.35/bin""
+export PATH="$PATH:/Volumes/Mx2/Applications/microchip/xc8/v1.35/bin"
 
-eval $(thefuck --alias crap )
+export PATH="$PATH:/Applications/microchip/xc8/v2.45/bin"
 
-. "$HOME/.cargo/env"
+export PATH="$PATH:/Applications/microchip/xc16/v2.10/bin"
+
+export PATH="$PATH:/Applications/microchip/xc8/v2.50/bin"
+
+export PATH="$PATH:/Applications/microchip/xc-dsc/v3.10/bin"
+
+export PATH="$PATH:/Applications/microchip/xc32/v4.45/bin"

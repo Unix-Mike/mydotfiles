@@ -1,17 +1,23 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/Scripts:$HOME/Bin:/usr/local/bin:$PATH
-export PATH=$PATH:/usr/local/sbin:$HOME/go/bin:$HOME/bin
+export PATH=$PATH:/usr/local/sbin:$HOME/go/bin
 export PATH=$PATH:/Users/michaelstuder/Library/Python/3.9/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/michaelstuder/.oh-my-zsh"
+
+# My settings
+export EXA_COLORS="da=1;49;37:sn=1;44;32:sb=1;44;31:uu=1;40;32:un=1;40;31"
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_222`
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="rkj"
+#ZSH_THEME="rkj"
+#ZSH_THEME="headline"
+ZSH_THEME="re5et"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,10 +80,10 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(
 	git
 	colorize
-	archlinux
 )
 
 source $ZSH/oh-my-zsh.sh
+source <(fzf --zsh)
 
 # User configuration
 
@@ -90,10 +96,6 @@ export LC_ALL=en_US.UTF-8
 # *** Exports ***
 export EDITOR='vim'
 export TERMINAL='iterm2'
-
-# *** Compiler and library paths
-export GOPATH=$HOME/go
-. "$HOME/.cargo/env"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -113,3 +115,7 @@ fi
 bindkey -v
 
 ## source /home/mstuder/.config/broot/launcher/bash/br
+
+export PATH="$PATH:/Applications/microchip/xc8/v2.45/bin"
+
+export PATH="$PATH:/Applications/microchip/xc8/v2.50/bin"

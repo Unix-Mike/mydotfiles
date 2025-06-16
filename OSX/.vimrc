@@ -16,19 +16,17 @@ set path+=**
 set wildmenu
 
 syntax on
-
 " Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = {
-   \ "mode": "passive"}
-
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_mode_map = {
+"    \ "mode": "passive"}
 
 " Numbers
 set number
@@ -44,18 +42,59 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Lightline config
+" ALE config settings
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_fixers = {
+\   'python': ['black'],
+\}
+" I am specifying my linter so I know who is to blame for error msg
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
 
-\let g:lightline = {
-      \ 'colorscheme': 'materia',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
+" Lightline config
+let g:lightline = {}
+" \ 'colorscheme': 'simpleblack'
+" \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
       \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.component_function = {
+      \   'gitbranch': 'FugitiveHead'
+      \ }
+
+let g:lightline.active = {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \              [ 'lineinfo' ],
+	  \              [ 'percent' ],
+	  \              [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ }
+
+
+" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
+
+" let g:lightline.active = {
+"             \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+"             \            [ 'lineinfo' ],
+" 	    \            [ 'percent' ],
+" 	    \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
+
 
 set rnu
 function! ToggleNumbersOn()
@@ -88,8 +127,7 @@ highlight ShowMarksHLm ctermfg=white ctermbg=blue
 "color vj
 "color vc
 "color zephyr
-color mike
-
+colorscheme mike
 
 " split settings
 set splitbelow splitright
@@ -100,16 +138,30 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Nerd Tree
-
 "map <C-n> :NERDTreeToggle <cr>
 noremap ,n :NERDTreeToggle <CR>
 noremap ,s :SyntasticCheck <CR>
 noremap ,w :FixWhitespace <CR>
 "
+" LSP section
+filetype plugin on
+" Turn off document diagnostics so ALE can do it
+let g:lsp_diagnostics_enabled = 0
 
-" vim Macros
-"   Remove double quotes from entire file
-let @q=':%s/"//g'
-"   Remove all comment lines beginning with a #
-let @c=':g/^#.*/d'
+" copied (almost) directly from the vim-lsp docs:
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled (set the lsp shortcuts) when an lsp server
+    " is registered for a buffer.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 

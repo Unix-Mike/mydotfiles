@@ -1,0 +1,38 @@
+#!/bin/bash
+# Check for changes in hosts dot files
+#
+ALERTCOLOR="#f14e32"
+
+dotdiff() {
+   echo "Checking for differences in dot files"
+   echo "-------------------------------------"
+   find . -type f |sed 's/^.//g'|xargs -I{} sh -c 'echo {};diff -q .{} ~/{};echo'
+}
+
+# read -p "Select OS, OSX (1), Linux (2) or (3) to quit: " myos
+myos="$(uname -o)"
+if [ "$myos" = "Darwin" ]; then
+	ospath="./OSX"
+	cd $ospath || exit 1
+    gum style \
+        --border double \
+        --margin "1" \
+        --padding "1" \
+        --border-foreground "$ALERTCOLOR" \
+        "OSX OS detected"
+        dotdiff
+elif [ "$myos" = "GNU/Linux" ]; then
+	ospath="./Linux"
+	cd $ospath || exit 1
+    gum style \
+        --border dowble \
+        --margin "1" \
+        --padding "i" \
+        --border-foreground "$ALERTCOLOR" \
+        "Linux OS detected"
+        dotdiff
+else
+	echo "Unknown OS selected. Exiting"
+	exit 1
+fi
+

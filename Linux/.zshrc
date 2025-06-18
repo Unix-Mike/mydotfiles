@@ -20,7 +20,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -30,6 +29,10 @@ export TERMINAL='kitty'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+if [ -f ~/.eso_aliases ]; then
+    . ~/.eso_aliases
 fi
 
 bindkey -v

@@ -95,7 +95,7 @@ export LC_ALL=en_US.UTF-8
 
 # *** Exports ***
 export EDITOR='vim'
-export TERMINAL='iterm2'
+export TERMINAL='kitty'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -110,6 +110,10 @@ export TERMINAL='iterm2'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+if [ -f ~/.eso_aliases ]; then
+    . ~/.eso_aliases
 fi
 
 bindkey -v

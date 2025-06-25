@@ -1,5 +1,5 @@
 " Mike Studer's vimrc file
-" Last Updated Jun 2025
+" Last Updated Oct 2024
 "
 set nocompatible        " be iMproved, required
 filetype off            " required
@@ -18,17 +18,6 @@ set wildmenu
 set t_Co=256
 
 syntax on
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = {
-   \ "mode": "passive"}
 
 " Numbers
 set number
@@ -38,6 +27,11 @@ set numberwidth=5
 set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
+
+" Indents
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set rnu
 function! ToggleNumbersOn()

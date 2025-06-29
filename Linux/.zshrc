@@ -46,12 +46,12 @@ fi
 source <(fzf --zsh)
 # echo "DEBUG: zshrc sourced"
 
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-
 # New prompt.  Make sure to install starship
 eval "$(starship init zsh)"
 # To switch to a preset version run this command...
 # starship preset gruvbox-rainbow -o ~/.config/starship.toml
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory

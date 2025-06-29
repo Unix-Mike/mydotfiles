@@ -13,6 +13,7 @@
 # df and du in a human readable format
     alias df="df -khl"
     alias du="du -h"
+    alias duf='duf --only local'
 # Typos I like to make.  Hope this list stays short.
     alias mroe='more'
     alias teh='the'

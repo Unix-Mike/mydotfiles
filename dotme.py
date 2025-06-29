@@ -16,6 +16,7 @@ import os
 from os.path import expanduser
 from pathlib import Path
 from colors import Colors
+from datetime import datetime
 
 # f_git = mydotfiles
 # f_home = home directory
@@ -109,18 +110,24 @@ class Dotme:
             self.klr.reset)
         kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)
         if kk == '1':
-            print("Copied from git to home")
+            print("Saving old copy with datestamp")
+            # This date string needs to become a filename so no slashes
+            dtime = datetime.now().strftime("_%Y-%m-%d_%H-%M-%S")
+            sfilenm = self.f_home + dtime
+            shutil.copy2(self.f_home, sfilenm)
+            print("Home file saved with timestamp")
             shutil.copy2(self.f_git, self.f_home)
+            print("Copied from git to home")
             self.sepline()
         elif kk == '2':
-            print("Copied from home to git")
             shutil.copy2(self.f_home, self.f_git)
+            print("Copied from home to git")
             self.sepline()
         elif kk == '3':
             self.sepline()
             return
         else:
-            exit(0)
+            sys.exit(0)
 
     def no_match(self):
         print(self.klr.bg_yellow + self.klr.fg_red + "{} is not in home directory".format(self.f_git) + self.klr.reset)
@@ -136,7 +143,7 @@ class Dotme:
             self.ospath = "./OSX"
         else:
             print("Unable to determine OS.  Exiting.")
-            exit(1)
+            sys.exit(1)
         return(self.ospath)
 
     def match_check(self):

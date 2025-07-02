@@ -11,3 +11,11 @@ meld
 kicad
 code
 shellcheck
+gparted
+gum
+nvtop
+iftop
+btop
+atop
+htop
+

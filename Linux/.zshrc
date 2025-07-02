@@ -49,7 +49,7 @@ source <(fzf --zsh)
 # New prompt.  Make sure to install starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
-# To switch to a preset version run this command...
+# To switch to a preset version run this example command...
 # starship preset gruvbox-rainbow -o ~/.config/starship.toml
 
 HISTFILE=~/.zsh_history

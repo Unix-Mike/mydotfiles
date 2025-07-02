@@ -25,6 +25,7 @@ from colors import Colors
 
 class Dotme:
     '''Main class '''
+
     def __init__(self):
         self.klr = Colors(True)
         self.ospath = 'none'

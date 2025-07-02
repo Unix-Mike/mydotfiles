@@ -11,18 +11,20 @@
 import filecmp
 import difflib
 import shutil
+import time
 import sys
 import os
 from os.path import expanduser
 from pathlib import Path
-from colors import Colors
 from datetime import datetime
+from colors import Colors
 
 # f_git = mydotfiles
 # f_home = home directory
 
 
 class Dotme:
+    '''Main class '''
     def __init__(self):
         self.klr = Colors(True)
         self.ospath = 'none'
@@ -35,79 +37,95 @@ class Dotme:
         self.tail = ''
 
     def sepline(self):
+        '''Line seperator'''
         for i in list(range(40)):
             print(self.klr.fg_lightgrey + "=", end="")
             print(self.klr.fg_darkgrey + "=", end="")
         print(self.klr.reset)
 
     def logo(self):
-        with open("logo.txt", "r") as dlogo:
+        '''Print the logo'''
+        with open("logo.txt", "r", encoding='utf-8') as dlogo:
             for line in dlogo:
                 sys.stdout.write(line)
-        return
 
     def bad_match(self):
+        '''Mismatch handler'''
         print(
             self.klr.fg_red
             + self.klr.bg_yellow
             + self.klr.bold
-            + "*** Mismatch *** between -->"
+            + "*** Mismatch *** between -->\n"
             + self.klr.reset
-            + " "
-            + self.klr.fg_cyan
+            + "                              "
+            + self.klr.fg_orange
+            + self.klr.bold
             + self.f_git
             + self.klr.reset
             + " and "
-            + self.klr.fg_purple
+            + self.klr.fg_green
+            + self.klr.bold
             + self.f_home
             + self.klr.reset
+            + "\n"
         )
-        print("Displaying file differences...")
-        with open(self.f_git, "r") as git_file:
-            with open(self.f_home, "r") as local_file:
+        print(f"{self.klr.bg_red}{self.klr.fg_yellow}{self.klr.bold}", end='')
+        print(f"Displaying file differences...\n{self.klr.reset}")
+        with open(self.f_git, "r", encoding='utf-8') as git_file:
+            with open(self.f_home, "r", encoding='utf-8') as local_file:
                 diff = difflib.unified_diff(
                     git_file.readlines(),
                     local_file.readlines(),
                     fromfile="git_file",
                     tofile="local_file",
                 )
+                # New fancy formatting of diffs
                 for line in diff:
-                    sys.stdout.write(line)
+                    if line.startswith("+"):
+                        print(f"{self.klr.fg_green}{self.klr.bold}{self.klr.bg_black}", end='')
+                        print(f"{line.strip()}{self.klr.reset}")
+                    elif line.startswith("-"):
+                        print(f"{self.klr.fg_orange}{self.klr.bold}{self.klr.bg_black}", end='')
+                        print(f"{line.strip()}{self.klr.reset}")
+                    else:
+                        # sys.stdout.write(line)
+                        print(f"{self.klr.fg_darkgrey}{line.strip()}{self.klr.reset}")
         self.head, self.tail = os.path.split(self.f_home)
-        print(self.klr.bg_black +
-            self.klr.fg_cyan +
-            "    Select what to do with " +
-            self.klr.bold +
-            self.klr.bg_yellow +
-            self.klr.fg_red +
-            " " +
-            self.tail +
-            " " +
-            self.klr.reset)
+        print()
+        print(f"{self.klr.bg_black}{self.klr.fg_cyan}", end='')
+        print(f"Select what to do with{self.klr.reset}  ==> ", end='')
+        print(f"{self.klr.bold}{self.klr.bg_yellow}{self.klr.fg_red} {self.tail} {self.klr.reset}")
+        print()
         print(self.klr.bg_black +
             self.klr.fg_cyan +
             "1. " +
-            self.klr.fg_blue +
+            self.klr.fg_orange +
             "Copy git file to home directory" +
             self.klr.reset)
         print(self.klr.bg_black +
             self.klr.fg_cyan +
             "2. " +
-            self.klr.fg_blue +
+            self.klr.fg_green +
             "Copy home file to git directory" +
             self.klr.reset)
+        print()
         print(self.klr.bg_black +
             self.klr.fg_cyan +
             "3. " +
-            self.klr.fg_blue +
-            "Skip to next file" +
+            self.klr.fg_cyan +
+            self.klr.bg_blue +
+            self.klr.bold +
+            " Skip to next file " +
             self.klr.reset)
         print(self.klr.bg_black +
             self.klr.fg_cyan +
             "4. " +
-            self.klr.fg_blue +
-            "Do nothing and exit" +
+            self.klr.bg_blue +
+            self.klr.fg_black +
+            self.klr.bold +
+            " Do nothing and exit " +
             self.klr.reset)
+        print()
         kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)
         if kk == '1':
             print("Saving old copy with datestamp")
@@ -127,15 +145,17 @@ class Dotme:
             self.sepline()
             return
         else:
-            sys.exit(0)
+            self.pexit()
 
     def no_match(self):
-        print(self.klr.bg_yellow + self.klr.fg_red + "{} is not in home directory".format(self.f_git) + self.klr.reset)
-        print(self.klr.fg_green + "Copied {} to home directory".format(self.f_git) + self.klr.reset)
+        '''No matches found handler'''
+        print(f"{self.klr.fg_orange}{self.klr.bold}ADDED {self.klr.reset}", end='')
+        print(f"{self.klr.fg_green}{self.f_git} to home directory{self.klr.reset}")
         self.sepline()
         shutil.copy2(self.f_git, self.f_home)
 
     def os_detector(self):
+        '''Detect what OS this is being run on'''
         self.useros = os.uname()
         if self.useros[0] == "Linux":
             self.ospath = "./Linux"
@@ -144,9 +164,18 @@ class Dotme:
         else:
             print("Unable to determine OS.  Exiting.")
             sys.exit(1)
-        return(self.ospath)
+        return self.ospath
+
+    def pexit(self):
+        '''Program exit message'''
+        self.sepline()
+        bye = "Goodbye my friend"
+        print(f"{bye:^80}")
+        self.sepline()
+        sys.exit(0)
 
     def match_check(self):
+        '''Check for matching files'''
         # This handles files only
         self.home_file = Path(self.f_home)
         # Check if the file exists in the home directory
@@ -155,11 +184,10 @@ class Dotme:
             if filecmp.cmp(self.f_git, self.f_home):
                 print(self.klr.fg_green + "Files match --> " + self.f_git + self.klr.reset)
                 self.sepline()
-                return()
             else:
-                    self.bad_match()
+                self.bad_match()
         else:
-                self.no_match()
+            self.no_match()
 
 
 #  ================== Main Loop =================
@@ -168,19 +196,19 @@ if __name__ == "__main__":
     print()  # Give some space from the prompt when program starts
     #  Print intro
     myd.logo()
-    print(
-        myd.klr.fg_lightblue
-        + myd.klr.bold
-        + "This utility checks differences between mydotfiles and users home directory"
-        + myd.klr.reset
-    )
-    print(
-        myd.klr.fg_lightblue
-        + myd.klr.bold
-        + "It gives you the option to replace the files.  It automatically adds missing files."
-        + myd.klr.reset
-    )
+    INFOMSG = f"""\
+{myd.klr.fg_lightblue}{myd.klr.bold}\
+This utility checks differences between this git repo and users home directory.
+It gives you the option to replace the files in home with git or vice versa.
+It automatically adds files missing in home directory but are in git directory.
+The menu lets you skip one file or exit entirely.\
+{myd.klr.reset}
+"""
+    myd.sepline()
+    print(INFOMSG, end='')
+    myd.sepline()
     print("")
+    time.sleep(5)
     # myd.ospath = 'none'
     myd.os_detector()
     os.chdir(myd.ospath)
@@ -195,5 +223,4 @@ if __name__ == "__main__":
 
         # Need to test if a file by that name exists in home dir.
         myd.match_check()
-    exit(0)
-
+    myd.pexit()

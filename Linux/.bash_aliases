@@ -33,6 +33,8 @@
 # vi aliases just in case they are not set already
     alias vi='vim'
     alias v='vim'
+# neovim alias
+    alias nv='nvim'
 # Make history not show number in front
     alias history='history -n'
     alias h='history'

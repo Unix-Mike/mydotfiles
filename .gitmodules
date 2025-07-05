@@ -1,0 +1,18 @@
+[submodule "Linux/.vim/pack/my-plugins/start/ale"]
+	path = Linux/.vim/pack/my-plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "Linux/.vim/pack/my-plugins/start/The-NERD-tree"]
+	path = Linux/.vim/pack/my-plugins/start/The-NERD-tree
+	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule "Linux/.vim/pack/my-plugins/start/trailing-whitespace"]
+	path = Linux/.vim/pack/my-plugins/start/trailing-whitespace
+	url = https://github.com/vim-scripts/trailing-whitespace.git
+[submodule "Linux/.vim/pack/my-plugins/start/lightline-ale"]
+	path = Linux/.vim/pack/my-plugins/start/lightline-ale
+	url = https://github.com/maximbaz/lightline-ale.git
+[submodule "Linux/.vim/pack/my-plugins/start/lightline.vim"]
+	path = Linux/.vim/pack/my-plugins/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "Linux/.vim/pack/my-plugins/start/surround.vim"]
+	path = Linux/.vim/pack/my-plugins/start/surround.vim
+	url = https://github.com/vim-scripts/surround.vim.git

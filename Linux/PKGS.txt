@@ -18,4 +18,3 @@ iftop
 btop
 atop
 htop
-waveman

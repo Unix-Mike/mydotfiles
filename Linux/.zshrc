@@ -3,6 +3,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mstuder/.oh-my-zsh"
 
+# Path to qmk firmware
+export QMK_HOME="/home/mstuder/Keyboard-software/qmk_firmware"
+
 ZSH_THEME="re5et"
 
 DISABLE_UPDATE_PROMPT="true"
@@ -14,8 +17,8 @@ DISABLE_UPDATE_PROMPT="true"
 plugins=(
 	git
 	archlinux
-        zsh-autosuggestions
-        zsh-syntax-highlighting
+    # zsh-autosuggestions
+    # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -36,7 +39,9 @@ if [ -f ~/.eso_aliases ]; then
     . ~/.eso_aliases
 fi
 
+# vi mode
 bindkey -v
+export KEYTIMEOUT=1
 
 # Mike settings for lf icons
 if [ -f ~/.lf-settings ]; then
@@ -56,3 +61,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+#
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -209,7 +209,7 @@ The menu lets you skip one file or exit entirely.\
     print(INFOMSG, end='')
     myd.sepline()
     print("")
-    time.sleep(5)
+    time.sleep(2)
     # myd.ospath = 'none'
     myd.os_detector()
     os.chdir(myd.ospath)

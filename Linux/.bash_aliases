@@ -22,8 +22,6 @@
     alias l2u="tr '[:lower:]' '[:upper:]'"
 # OMG you MUST have this so you can read your path!
     alias path='echo $PATH|tr ":" "\n"'
-# I don't think I need this anymore.
-    alias ggrep="/usr/gnu/bin/grep"
 # Nice terminal screensaver to hide what you are doing in a terminal
     alias aq="asciiquarium"
 # Makes starting tmux a bit easier

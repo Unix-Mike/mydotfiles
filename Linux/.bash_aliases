@@ -55,7 +55,7 @@
 
 # Begin FUNCTIONS
 
-function s {
+function src {
     source /home/mstuder/.bash_aliases
     source /home/mstuder/.zshrc
     }

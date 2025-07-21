@@ -10,15 +10,9 @@ ZSH_THEME="re5et"
 
 DISABLE_UPDATE_PROMPT="true"
 
-# Pacman package locations.  Add symlink in oh-my-zsh plugin dir.
-# /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-# /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 plugins=(
 	git
 	archlinux
-    # zsh-autosuggestions
-    # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -61,6 +55,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
-#
+
+setopt vi
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -50,6 +50,8 @@
     alias pzf="pacman -Qq |fzf --preview='pacman -Qs {1}' |xargs -r pacman -Qi"
     alias vzf='vim $(fzf --preview="bat --color always {}")'
     alias yzf="yay -Qq |fzf --preview='yay -Qs {1}' |xargs -r yay -Qi"
+# Extensions to bat
+    alias man="batman"
 
 # Begin FUNCTIONS
 

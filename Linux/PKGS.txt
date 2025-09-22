@@ -18,3 +18,5 @@ iftop
 btop
 atop
 htop
+bat
+bat-extras

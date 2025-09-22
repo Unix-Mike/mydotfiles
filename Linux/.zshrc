@@ -12,12 +12,10 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Plugin descriptions
 #   git         Adds lots of git short cuts to your aliases
-#   archlinux   Adds lots of pacman, yay, trizen, and pacaur shortcuts. See README in plugins dir.
 #   aliases     Prints a nice list of all defined aliases. 'acs' is the command. Or 'acs vim' show vim aliases.
 
 plugins=(
 	git
-	archlinux
     aliases
 )
 
@@ -56,6 +54,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Main options
+setopt dot_glob  # include dotfiles
+setopt extended_glob # match ~ # ^
 setopt appendhistory
 setopt vi
 setopt CORRECT

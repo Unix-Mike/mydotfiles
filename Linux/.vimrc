@@ -1,8 +1,7 @@
 " Mike Studer's vimrc file
-" Last Updated Oct 2024
+" Last Updated Oct 2025
 "
 set nocompatible        " be iMproved, required
-filetype off            " required
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set mouse=a             " Enable mouse usage (all modes)
@@ -15,13 +14,18 @@ set autoindent
 set showmode
 set path+=**
 set wildmenu
-set t_Co=256
+set t_Co=256            " Number of colors to use in vim
 
+filetype off            " Do not detect filetype I am working with
 syntax on
+
+" Set leader key to my commands
+let mapleader = "\<Space>"
+
 
 " Numbers
 set number
-set numberwidth=5
+set numberwidth=6
 
 " Scrolling
 set scrolloff=8
@@ -29,8 +33,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 " Indents
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set rnu
@@ -43,6 +47,7 @@ function! ToggleRelativeOn()
         set rnu!
         set nu
 endfunction
+
 autocmd FocusLost * call ToggleNumbersOn()
 autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
@@ -53,7 +58,7 @@ highlight ShowMarksHLu ctermfg=white ctermbg=blue
 highlight ShowMarksHLo ctermfg=white ctermbg=blue
 highlight ShowMarksHLm ctermfg=white ctermbg=blue
 
-" Colors
+" Colors for reference
 "color jellybeans
 "color maui
 "color Chasing_Logic
@@ -63,18 +68,10 @@ highlight ShowMarksHLm ctermfg=white ctermbg=blue
 "color vibrantink
 "color vj
 "color vc
-"colorscheme zephyr
+" Actual colorscheme to use
 colorscheme mike
 
-""" SYSTEM CLIPBOARD COPY & PASTE SUPPORT
-set pastetoggle=<F2> "F2 before pasting to preserve indentation
-"Copy paste to/from clipboard
-vnoremap <C-c> "*y
-map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
-map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-
-" split settings
+" Window split direction settings
 set splitbelow splitright
 " Remap splits navigation to just CTRL + h or v
 nnoremap <C-h> <C-w>s
@@ -82,10 +79,12 @@ nnoremap <C-v> <C-w>v
 
 " Nerd Tree
 "map <C-n> :NERDTreeToggle <cr>
-noremap ,n :NERDTreeToggle <CR>
-noremap ,s :SyntasticCheck <CR>
-noremap ,w :FixWhitespace <CR>
+noremap <leader>n :NERDTreeToggle <CR>
+noremap <leader>w :FixWhitespace <CR>
 "
+" Vim Buffers
+noremap <leader>[ :bprev <CR>
+noremap <leader>] :bnext <CR>
 
 " Lightline
 let g:lightline = {

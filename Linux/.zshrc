@@ -12,10 +12,12 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Plugin descriptions
 #   git         Adds lots of git short cuts to your aliases
+#   archlinux   Adds a lot of pacman commands
 #   aliases     Prints a nice list of all defined aliases. 'acs' is the command. Or 'acs vim' show vim aliases.
 
 plugins=(
-	git
+    git
+    archlinux
     aliases
 )
 
@@ -23,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 # *** Exports ***
 export EDITOR='vim'
-export TERMINAL='kitty'
+export TERMINAL='wezterm'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 

@@ -41,6 +41,8 @@
         alias icat="kitty +kitten icat"
     # kitty theme browser and selector
         alias themes="kitty +kitten themes"
+# Sonar ping
+    ##alias sping="ping -W 5 -c1 $1" && "play -q ~/Sounds/deepsonar.mp3" || "play -q ~/Sounds/Explosion1.mp3"
 # alias to allow quick checking of new USB serial connections
     alias ser="ls /dev/tty[A,U]*"
 # Advanced cp and move commmand aliases
@@ -60,6 +62,13 @@ function src {
     source /home/mstuder/.zshrc
     }
 
+function sping {
+    if ping -W 5 -c1 "$1" ; then
+      play -q ~/Sounds/deepsonar.mp3
+    else :
+      play -q ~/Sounds/Explosion1.mp3
+    fi
+    }
 
 function note {
     echo "Date: $(date "+%d %b %Y at %H:%M:%S")"

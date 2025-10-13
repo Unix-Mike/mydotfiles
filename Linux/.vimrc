@@ -1,4 +1,5 @@
 " Mike Studer's vimrc file
+"
 " Last Updated Oct 2025
 "
 set nocompatible        " be iMproved, required
@@ -21,7 +22,6 @@ syntax on
 
 " Set leader key to my commands
 let mapleader = "\<Space>"
-
 
 " Numbers
 set number
@@ -53,10 +53,10 @@ autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleNumbersOn()
 
-highlight ShowMarksHLl ctermfg=white ctermbg=blue
-highlight ShowMarksHLu ctermfg=white ctermbg=blue
-highlight ShowMarksHLo ctermfg=white ctermbg=blue
-highlight ShowMarksHLm ctermfg=white ctermbg=blue
+" highlight ShowMarksHLl ctermfg=white ctermbg=blue
+" highlight ShowMarksHLu ctermfg=white ctermbg=blue
+" highlight ShowMarksHLo ctermfg=white ctermbg=blue
+" highlight ShowMarksHLm ctermfg=white ctermbg=blue
 
 " Colors for reference
 "color jellybeans
@@ -76,9 +76,13 @@ set splitbelow splitright
 " Remap splits navigation to just CTRL + h or v
 nnoremap <C-h> <C-w>s
 nnoremap <C-v> <C-w>v
+" Navigate between splits
+noremap <C-k> <C-w>k<CR>"
+noremap <C-j> <C-w>j<CR>"
+
+noremap <leader>t :botright horizontal terminal<CR>
 
 " Nerd Tree
-"map <C-n> :NERDTreeToggle <cr>
 noremap <leader>n :NERDTreeToggle <CR>
 noremap <leader>w :FixWhitespace <CR>
 "
@@ -90,10 +94,7 @@ noremap <leader>] :bnext <CR>
 let g:lightline = {
       \ 'colorscheme': 'materia',
       \ }
-
-" ALE
-" I doubt this works but I left it in...
-let g:ale_python_flake8_args="--ignore=E501"
+set noshowmode
 
 " LSP section
 filetype plugin on

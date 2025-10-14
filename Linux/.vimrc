@@ -37,6 +37,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Line numbering
 set rnu
 function! ToggleNumbersOn()
         set nu!

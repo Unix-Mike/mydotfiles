@@ -71,6 +71,11 @@ autocmd InsertLeave * call ToggleNumbersOn()
 " Actual colorscheme to use
 colorscheme mike
 
+" Searches
+set hlsearch                  " Search highlighting
+" Hotkey to clear search highlights
+noremap <leader>c :noh <CR>
+
 " Window split direction settings
 set splitbelow splitright
 " Remap splits navigation to just CTRL + h or v

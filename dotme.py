@@ -56,9 +56,11 @@ class Dotme:
             self.klr.fg_red
             + self.klr.bg_yellow
             + self.klr.bold
-            + "*** Mismatch *** between -->\n"
+            + "*** Mismatch *** between -->"
             + self.klr.reset
-            + "                              "
+            )
+        print(
+            "                              "
             + self.klr.fg_orange
             + self.klr.bold
             + self.f_git
@@ -68,10 +70,9 @@ class Dotme:
             + self.klr.bold
             + self.f_home
             + self.klr.reset
-            + "\n"
         )
         print(f"{self.klr.bg_red}{self.klr.fg_yellow}{self.klr.bold}", end='')
-        print(f"Displaying file differences...\n{self.klr.reset}")
+        print(f"Displaying file differences...{self.klr.reset}\n")
         with open(self.f_git, "r", encoding='utf-8') as git_file:
             with open(self.f_home, "r", encoding='utf-8') as local_file:
                 diff = difflib.unified_diff(
@@ -93,38 +94,32 @@ class Dotme:
                         print(f"{self.klr.fg_darkgrey}{line.strip()}{self.klr.reset}")
         self.head, self.tail = os.path.split(self.f_home)
         print()
-        print(f"{self.klr.bg_black}{self.klr.fg_cyan}", end='')
-        print(f"Select what to do with{self.klr.reset}  ==> ", end='')
+        print(f"{self.klr.bg_black}{self.klr.fg_lightgrey}", end='')
+        print(f"Select what to do with {self.klr.reset}  ==> ", end='')
         print(f"{self.klr.bold}{self.klr.bg_yellow}{self.klr.fg_red} {self.tail} {self.klr.reset}")
         print()
         print(self.klr.bg_black +
-            self.klr.fg_cyan +
-            "1. " +
             self.klr.fg_orange +
-            "Copy git file to home directory" +
+            self.klr.bold +
+            "1. Copy git file to home directory" +
             self.klr.reset)
         print(self.klr.bg_black +
-            self.klr.fg_cyan +
-            "2. " +
             self.klr.fg_green +
-            "Copy home file to git directory" +
+            self.klr.bold +
+            "2. Copy home file to git directory" +
             self.klr.reset)
         print()
         print(self.klr.bg_black +
-            self.klr.fg_cyan +
-            "3. " +
-            self.klr.fg_cyan +
+            self.klr.fg_lightgrey +
             self.klr.bg_blue +
             self.klr.bold +
-            " Skip to next file " +
+            "3. Skip to next file " +
             self.klr.reset)
         print(self.klr.bg_black +
-            self.klr.fg_cyan +
-            "4. " +
-            self.klr.bg_blue +
+            self.klr.bg_red +
             self.klr.fg_black +
             self.klr.bold +
-            " Do nothing and exit " +
+            "4. Do nothing and exit " +
             self.klr.reset)
         print()
         kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)

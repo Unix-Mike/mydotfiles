@@ -20,12 +20,12 @@ vim.o.linebreak = true -- companion to wrap don't split words
 vim.o.scrolloff = 4 -- minimal number of screen lines to keep above and below the cursor
 vim.o.sidescrolloff = 8 -- minimal number of screen columns either side of cursor if wrap is `false`
 vim.o.relativenumber = true -- set relative numbered lines
-vim.o.numberwidth = 4 -- set number column width to 2 {default 4}
-vim.o.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.o.tabstop = 4 -- insert n spaces for a tab
-vim.o.softtabstop = 4 -- Number of spaces that a tab counts for while performing editing operations
+vim.o.numberwidth = 6 -- set number column width to 2 {default 4}
+vim.o.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.o.tabstop = 2 -- insert n spaces for a tab
+vim.o.softtabstop = 2 -- Number of spaces that a tab counts for while performing editing operations
 vim.o.expandtab = true -- convert tabs to spaces
-vim.o.cursorline = false -- highlight the current line
+vim.o.cursorline = true -- highlight the current line
 vim.o.splitbelow = true -- force all horizontal splits to go below current window
 vim.o.splitright = true -- force all vertical splits to go to the right of current window
 vim.o.swapfile = false -- creates a swapfile
@@ -42,4 +42,5 @@ vim.opt.shortmess:append 'c' -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append '-' -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove { 'c', 'r', 'o' } -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- separate vim plugins from neovim in case vim still in use
-
+vim.o.ruler = true -- Turn on the ruler
+vim.o.showmatch = true -- Show matching brackets

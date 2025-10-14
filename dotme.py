@@ -39,7 +39,8 @@ class Dotme:
 
     def sepline(self):
         '''Line seperator'''
-        for i in list(range(40)):
+        # Interesting trick to not get warning about unused variable. Use _
+        for _ in list(range(40)):
             print(self.klr.fg_lightgrey + "=", end="")
             print(self.klr.fg_darkgrey + "=", end="")
         print(self.klr.reset)

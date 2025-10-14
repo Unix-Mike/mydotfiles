@@ -35,6 +35,8 @@ return {
         'tsx',
         'css',
         'html',
+        'c',
+        'perl',
       },
 
       -- Autoinstall languages that are not installed

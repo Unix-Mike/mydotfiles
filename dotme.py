@@ -94,35 +94,32 @@ class Dotme:
                         print(f"{self.klr.fg_darkgrey}{line.strip()}{self.klr.reset}")
         self.head, self.tail = os.path.split(self.f_home)
         print()
-        print(f"{self.klr.bg_black}{self.klr.fg_lightgrey}", end='')
+        print(f"{self.klr.bg_black}{self.klr.fg_lightgrey}{self.klr.reset}", end='')
         print(f"Select what to do with {self.klr.reset}  ==> ", end='')
         print(f"{self.klr.bold}{self.klr.bg_yellow}{self.klr.fg_red} {self.tail} {self.klr.reset}")
         print()
-        print(self.klr.bg_black +
-            self.klr.fg_orange +
-            self.klr.bold +
-            "1. Copy git file to home directory" +
-            self.klr.reset)
-        print(self.klr.bg_black +
-            self.klr.fg_green +
-            self.klr.bold +
-            "2. Copy home file to git directory" +
-            self.klr.reset)
+        print((
+            f"{self.klr.bold}{self.klr.bg_black}{self.klr.fg_orange}"
+            f"1. Copy GIT file to home directory {self.klr.reset}"
+            ))
+        print((
+            f"{self.klr.bg_black}{self.klr.fg_green}{self.klr.bold}"
+            f"2. Copy HOME file to git directory {self.klr.reset}"
+            ))
         print()
-        print(self.klr.bg_black +
-            self.klr.fg_lightgrey +
-            self.klr.bg_blue +
-            self.klr.bold +
-            "3. Skip to next file " +
-            self.klr.reset)
-        print(self.klr.bg_black +
-            self.klr.bg_red +
-            self.klr.fg_black +
-            self.klr.bold +
-            "4. Do nothing and exit " +
-            self.klr.reset)
+        print((
+            f"{self.klr.bg_blue}{ self.klr.fg_lightgrey}{self.klr.bold}"
+            f"3. Skip to next file{self.klr.reset}"
+            ))
+        print((
+            f"{self.klr.bold}{self.klr.bg_red}{self.klr.fg_black}"
+            f"4. Do nothing and exit {self.klr.reset}"
+            ))
         print()
-        kk = input(self.klr.bg_black + self.klr.fg_yellow + "Choice: " + self.klr.reset)
+        kk = input((
+            f"{self.klr.bg_black}{self.klr.fg_yellow}{self.klr.bold}"
+            f"Select your choice #{self.klr.reset} "
+            ))
         if kk == '1':
             print("Saving old copy with datestamp")
             # This date string needs to become a filename so no slashes

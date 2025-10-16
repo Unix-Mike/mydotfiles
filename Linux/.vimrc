@@ -43,7 +43,6 @@ function! ToggleNumbersOn()
         set nu!
         set rnu
 endfunction
-
 function! ToggleRelativeOn()
         set rnu!
         set nu
@@ -59,18 +58,11 @@ autocmd InsertLeave * call ToggleNumbersOn()
 " highlight ShowMarksHLo ctermfg=white ctermbg=blue
 " highlight ShowMarksHLm ctermfg=white ctermbg=blue
 
-" Colors for reference
-"color jellybeans
-"color maui
-"color Chasing_Logic
-"color zephyr
-"color rdark-terminal
-"color northsky
-"color vibrantink
-"color vj
-"color vc
-" Actual colorscheme to use
-colorscheme mike
+" Color Schemes
+" colorscheme Chasing_Logic
+colorscheme darkblue
+" colorscheme onedark
+" colorscheme mike
 
 " Searches
 set hlsearch                  " Search highlighting

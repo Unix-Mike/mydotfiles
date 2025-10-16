@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-#
-# Program to check for dot file differences and update
+
+''' Program to check for dot file differences and update '''
 # as desired.
 #
 # Written by Mike Studer
 # Oct 2017
 #
-# Updated May 2019
+# Updated oct 2025
 #
 import filecmp
 import difflib
@@ -25,7 +25,7 @@ from colors import Colors
 
 class Dotme:
     '''Main class '''
-
+    # pylint: disable=too-many-instance-attributes
     def __init__(self):
         self.klr = Colors(True)
         self.ospath = 'none'
@@ -36,6 +36,7 @@ class Dotme:
         self.home_file = 'none'
         self.head = ''
         self.tail = ''
+
 
     def sepline(self):
         '''Line seperator'''
@@ -114,7 +115,7 @@ class Dotme:
             ))
         print((
             f"{self.klr.bold}{self.klr.bg_red}{self.klr.fg_black}"
-            f"4. Do nothing and exit {self.klr.reset}"
+            f"x. Do nothing and exit {self.klr.reset}"
             ))
         print()
         kk = input((
@@ -182,6 +183,18 @@ class Dotme:
                 self.bad_match()
         else:
             self.no_match()
+
+    def cfg_copy_home(self):
+        '''Copy config dirs to home'''
+        print("Copying git config directories to home")
+        #shutil.copytree(source_directory, destination_directory)
+        # shutil.copytree(source_directory, destination_directory, dirs_exist_ok=True)
+
+    def cfg_copy_git(self):
+        '''Copy config dirs to git'''
+        print("Copying home config directories to git")
+        # shutil.copytree(source_directory, destination_directory)
+        # shutil.copytree(source_directory, destination_directory, dirs_exist_ok=True)
 
 
 #  ================== Main Loop =================

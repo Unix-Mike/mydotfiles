@@ -3,14 +3,14 @@
 # Written by Mike Studer
 # July 2022
 #
-import subprocess
+# import subprocess
 import sys
 import os
-import glob
+# import glob
 import shutil
 import hashlib
 from pathlib import Path
-from os.path import expanduser, exists
+from os.path import expanduser
 from colors import Colors
 
 
@@ -114,8 +114,8 @@ class Vimup:
             self.ospath = "./OSX"
         else:
             print("Unable to determine OS.  Exiting.")
-            exit(1)
-        return(self.ospath)
+            sys.exit(1)
+        return self.ospath
 
     def sepline(self):
         for i in list(range(40)):
@@ -151,12 +151,10 @@ if __name__ == "__main__":
 
     print("DEBUG: home " + myv.home)
     print("DEBUG: OS " + myv.ospath)
-'''
-To list all files in a directory
-    from pathlib import Path
-    is_empty = not any(Path('some/path/here').iterdir())
 
-To list all subdirectories
-    subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
- '''
-
+# To list all files in a directory
+#     from pathlib import Path
+#     is_empty = not any(Path('some/path/here').iterdir())
+#
+# To list all subdirectories
+#     subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]

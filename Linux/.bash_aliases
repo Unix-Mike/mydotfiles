@@ -14,6 +14,8 @@
     alias df="df -khl"
     alias du="du -h"
     alias duf='duf --only local'
+# findmnt to locate filesystems like mount does
+    alias findmnt="findmnt -o TARGET,SOURCE,FSTYPE --real"
 # Typos I like to make.  Hope this list stays short.
     alias mroe='more'
     alias teh='the'

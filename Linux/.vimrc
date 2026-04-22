@@ -53,16 +53,14 @@ autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleNumbersOn()
 
-" highlight ShowMarksHLl ctermfg=white ctermbg=blue
-" highlight ShowMarksHLu ctermfg=white ctermbg=blue
-" highlight ShowMarksHLo ctermfg=white ctermbg=blue
-" highlight ShowMarksHLm ctermfg=white ctermbg=blue
 
 " Color Schemes
 " colorscheme Chasing_Logic
 colorscheme darkblue
 " colorscheme onedark
 " colorscheme mike
+" colorscheme void
+" colorscheme woju
 
 " Searches
 set hlsearch                  " Search highlighting
@@ -77,7 +75,6 @@ nnoremap <C-v> <C-w>v
 " Navigate between splits
 noremap <C-k> <C-w>k<CR>"
 noremap <C-j> <C-w>j<CR>"
-
 noremap <leader>t :botright horizontal terminal<CR>
 
 " Nerd Tree

@@ -25,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 # *** Exports ***
 export EDITOR='vim'
-export TERMINAL='wezterm'
+export TERMINAL='ghostty'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 

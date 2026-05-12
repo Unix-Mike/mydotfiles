@@ -5,7 +5,9 @@ format = """
 $username\
 [](bg:color_blue fg:color_orange)\
 $hostname\
-[](bg:color_yellow fg:color_blue)\
+[](bg:color_green fg:color_blue)\
+$os\
+[](bg:color_yellow fg:color_green)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
@@ -31,6 +33,8 @@ $time\
 $line_break$character"""
 
 palette = 'gruvbox_dark'
+command_timeout = 1000
+scan_timeout = 5000
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
@@ -44,59 +48,90 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 color_black = '#000000'
+color_white = '#ffffff'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_green fg:color_black"
+format = "[on $symbol]($style)"
 
 [os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-EndeavourOS = ""
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-Pop = ""
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
+Alpine = "🏔️ "
+ALTLinux = "Ⓐ "
+Amazon = "🙂 "
+Android = "🤖 "
+AOSC = "🐱 "
+Arch = "🎗️ "
+Artix = "🎗️ "
+Bluefin = "🐟 "
+CachyOS = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Elementary = "🍏 "
+Emscripten = "🔗 "
+EndeavourOS = "🚀 "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜️ "
+HardenedBSD = "🛡️ "
+Illumos = "🐦 "
+Ios = "📱 "
+InstantOS = "⏲️ "
+Kali = "🐉 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = "🍎 "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+Nobara = "🎩 "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+PikaOS = "🐤 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
+Redox = "🧪 "
+Solus = "⛵ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Uos = "🐲 "
+Void = " "
+Windows = "🪟 "
+Zorin = "🔹 "
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
+style_user = "bg:color_orange fg:color_white bold"
+style_root = "bg:color_orange fg:color_white bold"
 format = '[ $user ]($style)'
 
 [hostname]
-ssh_only = true
+ssh_only = false
 # ssh_symbol = " 🌐"
 ssh_symbol = " 🌏"
-format = '[$ssh_symbol](bg:color_blue)[ $hostname ](fg:color_black bold bg:color_blue)'
-# format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+format = '[$ssh_symbol $hostname ](fg:color_black bold bg:color_blue)'
 
 [directory]
-style = "fg:bold black bg:color_yellow"
+style = "fg:bold color_black bg:color_yellow"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 6
 truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
 
 [git_branch]
 symbol = ""

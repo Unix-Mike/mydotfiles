@@ -26,6 +26,8 @@
     alias path='echo $PATH|tr ":" "\n"'
 # Nice terminal screensaver to hide what you are doing in a terminal
     alias aq="asciiquarium"
+# Easier to type systemctl status
+    alias syst='systemctl status '
 # Makes starting tmux a bit easier
     alias tmx="tmux new -s Mike"
 # Pretty colored ASCII text

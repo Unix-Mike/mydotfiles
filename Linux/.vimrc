@@ -19,7 +19,7 @@ set t_Co=256            " Number of colors to use in vim
 
 filetype off            " Do not detect filetype I am working with
 syntax on
-
+ 
 " Set leader key to my commands
 let mapleader = "\<Space>"
 
@@ -63,9 +63,19 @@ colorscheme darkblue
 " colorscheme woju
 
 " Searches
-set hlsearch                  " Search highlighting
+set hlsearch " Search highlighting on
+
 " Hotkey to clear search highlights
 noremap <leader>c :noh <CR>
+
+" Hotkey to remove all blank lines
+noremap <leader>b :g/^$/d <CR>
+
+" Hotkey to remove all comment lines
+noremap <leader># :g/^\s*#/d <CR>
+
+" Hotkey to remove all extra whitespaces
+noremap <leader>w :FixWhitespace <CR>
 
 " Window split direction settings
 set splitbelow splitright
@@ -79,7 +89,6 @@ noremap <leader>t :botright horizontal terminal<CR>
 
 " Nerd Tree
 noremap <leader>n :NERDTreeToggle <CR>
-noremap <leader>w :FixWhitespace <CR>
 "
 " Vim Buffers
 noremap <leader>[ :bprev <CR>

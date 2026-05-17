@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export XDG_CONFIG_HOME=$HOME/.config
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mstuder/.oh-my-zsh"
@@ -12,12 +13,10 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Plugin descriptions
 #   git         Adds lots of git short cuts to your aliases
-#   archlinux   Adds a lot of pacman commands
 #   aliases     Prints a nice list of all defined aliases. 'acs' is the command. Or 'acs vim' show vim aliases.
 
 plugins=(
-    git
-    archlinux
+	git
     aliases
 )
 
@@ -25,7 +24,7 @@ source $ZSH/oh-my-zsh.sh
 
 # *** Exports ***
 export EDITOR='vim'
-export TERMINAL='ghostty'
+export TERMINAL='wezterm'
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -49,7 +48,7 @@ fi
 source <(fzf --zsh)
 
 # New prompt.  Make sure to install starship
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
 HISTFILE=~/.zsh_history

@@ -1,8 +1,4 @@
-return {
-    {
-    'johnfrankmorgan/whitespace.nvim',
-    config = function ()
-        require('whitespace-nvim').setup({
+require('whitespace-nvim').setup({
             -- configuration options and their defaults
 
             -- `highlight` configures which highlight is used to display
@@ -20,7 +16,3 @@ return {
             -- position after trimming whitespace
             return_cursor = true,
         })
-        vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
-    end
-    }
-}

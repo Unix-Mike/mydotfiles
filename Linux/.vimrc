@@ -75,7 +75,7 @@ noremap <leader>b :g/^$/d <CR>
 noremap <leader># :g/^\s*#/d <CR>
 
 " Hotkey to remove all extra whitespaces
-noremap <leader>w :FixWhitespace <CR>
+noremap <leader>- :FixWhitespace <CR>
 
 " Window split direction settings
 set splitbelow splitright

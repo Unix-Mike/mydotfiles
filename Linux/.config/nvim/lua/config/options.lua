@@ -41,7 +41,7 @@ local options = {
 	splitkeep = 'screen', --stablizie window open/close
 
     -- guicursor = "n-v-c:hor20"
-    guicursor = "a:hor20"
+    guicursor = "n-v-c-i:ver20"
 }
 
 for k, v in pairs(options) do

@@ -68,7 +68,7 @@ map("n", "<leader>u", ':silent !xdg-open "<cWORD>" &<CR>') --open a url under cu
 map("v", "<leader>i", "=gv") --auto indent
 map("n", "<leader>W", ":set wrap!<CR>") --toggle wrap
 map("n", "<leader>l", ":Twilight<CR>") --surrounding dim
-map("n", "<leader>_", require('whitespace-nvim').trim) -- trim whitespace
+map("n", "<leader>-", require('whitespace-nvim').trim) -- trim whitespace
 
  -- Mike
  map("n", "<leader>b", ":g/^$/d <CR>") -- Remove blank lines

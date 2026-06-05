@@ -40,12 +40,12 @@ set expandtab
 " Line numbering
 set rnu
 function! ToggleNumbersOn()
-        set nu!
-        set rnu
+  set nu!
+  set rnu
 endfunction
 function! ToggleRelativeOn()
-        set rnu!
-        set nu
+  set rnu!
+  set nu
 endfunction
 
 autocmd FocusLost * call ToggleNumbersOn()
@@ -109,18 +109,18 @@ filetype plugin on
 let g:lsp_diagnostics_enabled = 0
 " Copied (almost) directly from the vim-lsp docs:
 function! s:on_lsp_buffer_enabled() abort
-     setlocal omnifunc=lsp#complete
-     setlocal signcolumn=yes
-     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 
-     let g:lsp_format_sync_timeout = 1000
-     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
-     au!
-     " call s:on_lsp_buffer_enabled (set the lsp shortcuts) when an lsp server
-     " is registered for a buffer.
-     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  au!
+  " call s:on_lsp_buffer_enabled (set the lsp shortcuts) when an lsp server
+  " is registered for a buffer.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 

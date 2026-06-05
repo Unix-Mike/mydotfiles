@@ -45,7 +45,6 @@ Plug('MeanderingProgrammer/render-markdown.nvim') --render md inline
 Plug('emmanueltouzery/decisive.nvim') --view csv files
 Plug('folke/twilight.nvim') --surrounding dim
 Plug('johnfrankmorgan/whitespace.nvim') -- MS identify hidden whitespaces
-Plug('folke/flash.nvim') --Faster finding of a character
 
 vim.call('plug#end')
 
@@ -78,7 +77,6 @@ require("plugins.treesitter")
 require("plugins.twilight")
 require("plugins.which-key")
 require("plugins.whitespace")
--- FAILS require("plugins.flash")
 end, 100)
 
 load_theme()

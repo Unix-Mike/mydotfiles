@@ -19,7 +19,7 @@ set t_Co=256            " Number of colors to use in vim
 
 filetype off            " Do not detect filetype I am working with
 syntax on
- 
+
 " Set leader key to my commands
 let mapleader = "\<Space>"
 
@@ -61,6 +61,9 @@ colorscheme darkblue
 " colorscheme mike
 " colorscheme void
 " colorscheme woju
+
+" Put code comments in italics
+highlight Comment cterm=italic
 
 " Searches
 set hlsearch " Search highlighting on

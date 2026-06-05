@@ -6,11 +6,17 @@ config.font_size = 12
 config.line_height = 0.9
 config.initial_cols = 150
 config.initial_rows = 65
+
 -- config.font = wezterm.font 'FiraCode Nerd Font'
 -- config.font = wezterm.font 'BlexMono Nerd Font'
-config.font = wezterm.font 'SauceCodePro Nerd Font'
+-- config.font = wezterm.font 'SauceCodePro Nerd Font'
 -- config.font = wezterm.font 'Monofur Nerd Font'
+config.font = wezterm.font 'Hack'
+-- config.font = wezterm.font 'RecMonoCasual Nerd Font'
+-- config.font = wezterm.font 'CaskaydiaCove Nerd Font'
 
+-- Cursor type
+config.default_cursor_style = "BlinkingBar"
 
 -- Colors
 config.colors = {
